@@ -34,7 +34,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
 
         Scene(ViewController viewController){
             drawingPanel = new DrawingPanel(viewController);
-            drawingPanel.setBackground(new Color(255,255,255));
+            drawingPanel.setBackground(new Color(0, 0, 0));
             drawables = new ArrayList<>();
             interactables = new ArrayList<>();
         }
@@ -122,7 +122,9 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
         createScene();
         // Erzeuge ein neues Fenster zum Zeichnen
         drawFrame = new DrawFrame(my_project.Config.WINDOW_TITLE, x, y, my_project.Config.WINDOW_WIDTH, my_project.Config.WINDOW_HEIGHT, scenes.get(0).drawingPanel);
-        drawFrame.setResizable(false);
+        drawFrame.setResizable(true);
+        ImageIcon image = new ImageIcon("Fortnite2D.png");
+        drawFrame.setIconImage(image.getImage());
         showScene(0);
         // Übergibt den weiteren Programmfluss an das neue Objekt der Klasse ViewController
         if ( Config.INFO_MESSAGES) System.out.println("  > ViewController: Fenster eingerichtet. Startszene (Index: 0) angelegt.");

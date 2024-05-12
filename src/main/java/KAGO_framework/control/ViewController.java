@@ -34,7 +34,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
 
         Scene(ViewController viewController){
             drawingPanel = new DrawingPanel(viewController);
-            drawingPanel.setBackground(new Color(0, 0, 0));
+            drawingPanel.setBackground(new Color(101, 241, 20));
             drawables = new ArrayList<>();
             interactables = new ArrayList<>();
         }

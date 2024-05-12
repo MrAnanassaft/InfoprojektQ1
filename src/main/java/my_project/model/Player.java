@@ -16,8 +16,6 @@ public class Player extends InteractiveGraphicalObject {
     private int velocity = 500;
     private double gravityConstant = 981;
     private double verticalVeloctiy = 0;
-    private int height = 100;
-    private int width = 100;
 
     private double cooldown = 1;
     private boolean touchedGrass = false;
@@ -27,11 +25,17 @@ public class Player extends InteractiveGraphicalObject {
     private int right;
     private int left;
     private int jump;
+    public int healthbarwidth;
+    public int healthbarx;
     ViewController viewController;
 
-    public Player(double x, double y, ViewController viewController, int right, int left, int jump) {
+    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, ViewController viewController, int right, int left, int jump) {
         this.x = x;
         this.y = y;
+        this.width = width;
+        this.height = height;
+        this.healthbarwidth = healthbarwidth;
+        this.healthbarx = healthbarx;
         this.right = right;
         this.left = left;
         this.jump = jump;
@@ -47,6 +51,9 @@ public class Player extends InteractiveGraphicalObject {
         drawTool.drawFilledRectangle(x,y,width,height);
         drawTool.setCurrentColor(new Color(0,0,0));
 
+        drawTool.setCurrentColor(new Color(185, 0, 0));
+        drawTool.drawFilledRectangle(healthbarx, 10, healthbarwidth, 30);
+
         /*drawTool.drawLine(0,200,600,200);
         drawTool.drawLine(0,500,600,500);
         drawTool.drawLine(0,400,600,400);
@@ -57,6 +64,9 @@ public class Player extends InteractiveGraphicalObject {
     }
 
     public void update(double dt){
+        System.out.println(Config.WINDOW_WIDTH);
+        System.out.println(Config.WINDOW_HEIGHT);
+
         if(y < Config.WINDOW_HEIGHT-40 - height){
             y += verticalVeloctiy * dt;
             verticalVeloctiy += gravityConstant * dt;

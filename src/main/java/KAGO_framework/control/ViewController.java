@@ -6,6 +6,7 @@ import KAGO_framework.view.DrawTool;
 import my_project.control.ProgramController;
 import KAGO_framework.view.DrawFrame;
 import KAGO_framework.view.DrawingPanel;
+import my_project.model.StartButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -370,6 +371,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
             Interactable tmpInteractable = iterator.next();
             tmpInteractable.mouseMoved(e);
         }
+        enlargeButton(programController.button,e);
     }
 
     @Override
@@ -406,5 +408,13 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
             tmpInteractable.keyReleased(e.getKeyCode());
         }
     }
-
+    public void enlargeButton(StartButton button, MouseEvent e){
+        if(button.button.mouseHovered(e)){
+            //lerp(100,200,1);
+            System.out.println("hovered");
+        }
+    }
+    public static double lerp(double start, double end, double time) {
+        return start * (1 - time) + end * time;
+    }
 }

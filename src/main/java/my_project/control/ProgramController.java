@@ -3,13 +3,14 @@ package my_project.control;
 import KAGO_framework.control.ViewController;
 import my_project.Config;
 import my_project.model.*;
-
 import javax.swing.*;
+import java.awt.event.MouseEvent;
 
 public class ProgramController {
 
     public static Player player;
     public static Player player1;
+    public StartButton button;
     double timer;
     public static ViewController viewController;
     public ProgramController(ViewController viewController){
@@ -21,8 +22,8 @@ public class ProgramController {
         viewController.createScene();
         Background backgroundS1 = new Background(0, viewController);
         viewController.draw(backgroundS1,0);
-        StartButton startButton = new StartButton(this);
-        viewController.draw(startButton,0);
+        button = new StartButton(this);
+        viewController.draw(button,0);
 
 
     }
@@ -60,6 +61,7 @@ public class ProgramController {
         viewController.register(player1);
         viewController.showScene(1);
     }
+
 }
 
     //Player player = new Player(100, 100, 100, 100, 200, 20, viewController,68, 65, 32);

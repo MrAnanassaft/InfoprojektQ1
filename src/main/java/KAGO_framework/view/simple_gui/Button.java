@@ -106,13 +106,13 @@ public class Button extends Label implements Interactable {
     public void mousePressed(MouseEvent e) {
 
     }
-    public void mouseHovered(MouseEvent e){
+    public boolean mouseHovered(MouseEvent e){
         double mouseX = e.getX();
         double mouseY = e.getY();
         if(mouseX > x && mouseX < x+width && mouseY > y && mouseY < y+height){
-            isHovered = true;
+            return true;
         }else{
-            isHovered = false;
+            return false;
         }
     }
 }

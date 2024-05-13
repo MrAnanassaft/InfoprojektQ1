@@ -122,6 +122,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
         createScene();
         // Erzeuge ein neues Fenster zum Zeichnen
         drawFrame = new DrawFrame(my_project.Config.WINDOW_TITLE, x, y, my_project.Config.WINDOW_WIDTH, my_project.Config.WINDOW_HEIGHT, scenes.get(0).drawingPanel);
+        drawFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         drawFrame.setResizable(true);
         ImageIcon image = new ImageIcon("Fortnite2D.png");
         drawFrame.setIconImage(image.getImage());

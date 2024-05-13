@@ -1,10 +1,13 @@
 package my_project.control;
 
 import KAGO_framework.control.ViewController;
+import my_project.Config;
 import my_project.model.CollisionDetector;
 import my_project.model.Player;
 import my_project.model.Shot;
 import my_project.model.Variable_Container;
+
+import javax.swing.*;
 
 public class ProgramController {
 
@@ -15,8 +18,8 @@ public class ProgramController {
     }
     public void startProgram() {
 
-        Player player = new Player(100, 100, 100, 100, 200, 20, viewController,68, 65, 32);
-        Player player1 = new Player( 200, 200, 100, 100, 200, 1705, viewController,39, 37, 155);
+        Player player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, viewController,68, 65, 32);
+        Player player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, viewController,39, 37, 155);
         viewController.draw(player);
         viewController.register(player);
         viewController.draw(player1);
@@ -32,3 +35,6 @@ public class ProgramController {
         }
     }
 }
+
+    //Player player = new Player(100, 100, 100, 100, 200, 20, viewController,68, 65, 32);
+    //Player player1 = new Player( 200, 200, 100, 100, 200, 1705, viewController,39, 37, 155);

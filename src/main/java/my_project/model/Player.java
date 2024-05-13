@@ -28,7 +28,6 @@ public class Player extends InteractiveGraphicalObject {
     public int healthbarwidth;
     public int healthbarx;
     ViewController viewController;
-
     public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, ViewController viewController, int right, int left, int jump) {
         this.x = x;
         this.y = y;
@@ -64,16 +63,17 @@ public class Player extends InteractiveGraphicalObject {
     }
 
     public void update(double dt){
-        System.out.println(Config.WINDOW_WIDTH);
-        System.out.println(Config.WINDOW_HEIGHT);
+       // System.out.println(healthbarx);
+        /*System.out.println(Config.WINDOW_WIDTH);
+        System.out.println(Config.WINDOW_HEIGHT);*/
 
-        if(y < Config.WINDOW_HEIGHT-40 - height){
+        if(y < viewController.getDrawFrame().getHeight() - height){
             y += verticalVeloctiy * dt;
             verticalVeloctiy += gravityConstant * dt;
             touchedGrass = false;
         }else {
             verticalVeloctiy = 0;
-            y = Config.WINDOW_HEIGHT-40 - height;
+            y = viewController.getDrawFrame().getHeight() - height;
             touchedGrass = true;
             cooldowntimerboolean = false;
         }

@@ -58,6 +58,5 @@ public class DrawFrame extends JFrame {
     public int getHeight(){
         return activePanel.getHeight();
     }
-
 }
 

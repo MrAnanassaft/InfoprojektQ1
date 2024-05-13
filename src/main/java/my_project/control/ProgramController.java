@@ -24,7 +24,7 @@ public class ProgramController {
         viewController.register(player);
         viewController.draw(player1);
         viewController.register(player1);
-
+        viewController.createScene();
     }
     public void updateProgram(double dt){
         for (int i = 0; i <= Variable_Container.shots.size() - 1; i++){

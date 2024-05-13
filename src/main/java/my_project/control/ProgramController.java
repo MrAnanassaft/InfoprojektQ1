@@ -11,15 +11,16 @@ import javax.swing.*;
 
 public class ProgramController {
 
-    Player player;
+    public static Player player;
+    public static Player player1;
     private ViewController viewController;
     public ProgramController(ViewController viewController){
         this.viewController = viewController;
     }
     public void startProgram() {
 
-        Player player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, viewController,68, 65, 32);
-        Player player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, viewController,39, 37, 155);
+        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, viewController,68, 65, 32, 69);
+        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, viewController,39, 37, 155, 17);
         viewController.draw(player);
         viewController.register(player);
         viewController.draw(player1);

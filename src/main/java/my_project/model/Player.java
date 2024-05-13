@@ -7,6 +7,7 @@ import KAGO_framework.view.DrawTool;
 import my_project.Config;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class Player extends InteractiveGraphicalObject {
 
@@ -25,10 +26,11 @@ public class Player extends InteractiveGraphicalObject {
     private int right;
     private int left;
     private int jump;
+    private int shoot;
     public int healthbarwidth;
     public int healthbarx;
     ViewController viewController;
-    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, ViewController viewController, int right, int left, int jump) {
+    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, ViewController viewController, int right, int left, int jump, int shoot) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -38,6 +40,7 @@ public class Player extends InteractiveGraphicalObject {
         this.right = right;
         this.left = left;
         this.jump = jump;
+        this.shoot = shoot;
         this.viewController = viewController;
     }
 
@@ -96,40 +99,11 @@ public class Player extends InteractiveGraphicalObject {
         if(cooldowntimerboolean){
             y -= velocity * dt;
         }
-        /*if (y + height > Config.WINDOW_HEIGHT - 80 & cooldown == 1){
-            if (ViewController.isKeyDown(32)) { // Leertaste
-                cooldowntimerboolean = true;
-            }
+        if (ViewController.isKeyDown(shoot)){
+            shoot();
         }
-        if (cooldowntimerboolean){
-            cooldown -= dt;
-
-            if (cooldown <= 0){
-                cooldown = 1;
-                cooldowntimerboolean = false;
-            }
-        }
-
-        if (cooldown <= 0.9) {
-            y -= velocity * dt;
-        }*/
-
-        //System.out.println(cooldown);
-        /*if (x >= 1920 - r*2 || x <= 0 + r || y >= 580 - r || y <= 0 + r) {
-            velocity = velocity * -1;
-        }
-        if(y>=410){
-            r = 21;
-        }*/
-
-        /*if (x > WINDOW_WIDTH + 42) {
-            x = WINDOW_WIDTH - WINDOW_WIDTH - 21;
-        }
-        if (x < WINDOW_WIDTH - WINDOW_WIDTH - 42){
-            x = WINDOW_WIDTH + 21;
-        }
-        if (y > WINDOW_HEIGHT - 61){
-            y = WINDOW_HEIGHT - 61;
-        }*/
+    }
+    public void shoot(){
+        //Shot shot = new Shot(x, y, );
     }
 }

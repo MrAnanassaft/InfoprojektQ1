@@ -30,6 +30,7 @@ public class Player extends InteractiveGraphicalObject {
     public int healthbarwidth;
     public int healthbarx;
     ViewController viewController;
+
     public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, ViewController viewController, int right, int left, int jump, int shoot) {
         this.x = x;
         this.y = y;
@@ -103,7 +104,16 @@ public class Player extends InteractiveGraphicalObject {
             shoot();
         }
     }
+    double magnitude = Math.sqrt(x * x + y * y);
+
+    double normX = x / magnitude;
+    double normY = y / magnitude;
+
     public void shoot(){
-        //Shot shot = new Shot(x, y, );
+        Shot shot = new Shot(x, y, normX, normY, 4, Shot.normplayer, Shot.playerTarget);
+        Variable_Container.shots.add(shot);
+        viewController.draw(shot, 1);
     }
+
+
 }

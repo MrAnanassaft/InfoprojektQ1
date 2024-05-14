@@ -25,6 +25,8 @@ public class StartButton extends GraphicalObject {
     private boolean wasPressed = false;
 
     public StartButton(ProgramController p) {
+
+
         this.p = p;
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override

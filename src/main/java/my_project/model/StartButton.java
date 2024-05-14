@@ -10,6 +10,7 @@ import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.control.ProgramController;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -23,6 +24,7 @@ public class StartButton extends GraphicalObject {
     public Button button;
     private BufferedImage image;
     private boolean wasPressed = false;
+
 
     public StartButton(ProgramController p) {
 

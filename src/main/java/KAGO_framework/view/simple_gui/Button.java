@@ -3,6 +3,7 @@ package KAGO_framework.view.simple_gui;
 import KAGO_framework.control.Interactable;
 import KAGO_framework.view.DrawTool;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
@@ -17,6 +18,7 @@ public class Button extends Label implements Interactable {
     //Attribute
     private int actionCode;
     protected boolean isHovered;
+    private boolean isTouched = false;
 
     /**
      * Erzeugt einen neuen, simplen und nicht sonderlich schönen, aber funktionalen Button
@@ -57,6 +59,10 @@ public class Button extends Label implements Interactable {
     @Override
     public void draw(DrawTool drawTool) {
         super.draw(drawTool);
+        if(isTouched){
+            drawTool.setCurrentColor(Color.RED);
+            drawTool.drawRectangle(800,400,320,100);
+        }
     }
 
     @Override
@@ -114,5 +120,11 @@ public class Button extends Label implements Interactable {
         }else{
             return false;
         }
+    }
+    public void isTouched(){
+        isTouched =  true;
+    }
+    public void isNotTouched(){
+        isTouched = false;
     }
 }

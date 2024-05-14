@@ -386,7 +386,8 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
             Interactable tmpInteractable = iterator.next();
             tmpInteractable.mouseMoved(e);
         }
-        enlargeButton(programController.startButton,e);
+        highlightStartButton(e);
+        //highlightRestartButton(e);
     }
 
     @Override
@@ -423,10 +424,19 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
             tmpInteractable.keyReleased(e.getKeyCode());
         }
     }
-    public void enlargeButton(StartButton button, MouseEvent e){
-        if(button.button.mouseHovered(e)){
+    public void highlightStartButton(MouseEvent e){
+        if(programController.startButton.button.mouseHovered(e)){
+            programController.startButton.button.isTouched();
+        }else{
+            programController.startButton.button.isNotTouched();
+        }
+    }
+    public void highlightRestartButton(MouseEvent e){
+        if(programController.restartButton.button.mouseHovered(e)){
             //lerp(100,200,1);
-            System.out.println("hovered");
+            programController.restartButton.button.isTouched();
+        }else{
+            programController.restartButton.button.isNotTouched();
         }
     }
     public static double lerp(double start, double end, double time) {

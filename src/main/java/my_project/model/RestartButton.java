@@ -10,7 +10,7 @@ import static my_project.control.ProgramController.viewController;
 
 public class RestartButton extends GraphicalObject {
     private ProgramController p;
-    private Button button;
+    public Button button;
     //private BufferedImage image;
     private boolean wasPressed = false;
 

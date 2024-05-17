@@ -64,6 +64,7 @@ public class ProgramController {
         viewController.createScene(); // index 2 = end
         viewController.createScene(); // index 3 = skins
         viewController.createScene(); // index 4 = map
+        viewController.createScene(); // index 5 = weapon
         viewController.showScene(0);
     }
     public void setScenesForStart(){

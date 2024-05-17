@@ -1,4 +1,4 @@
-package my_project.model;
+package my_project.model.buttons;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.simple_gui.Button;
@@ -8,14 +8,10 @@ import my_project.control.ProgramController;
 import static my_project.control.ProgramController.viewController;
 
 
-public class RestartButton extends GraphicalObject {
-    private ProgramController p;
-    public Button button;
-    //private BufferedImage image;
-    private boolean wasPressed = false;
+public class RestartButton extends Buttons {
 
     public RestartButton(ProgramController p) {
-        this.p = p;
+        super(p);
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {
@@ -36,8 +32,8 @@ public class RestartButton extends GraphicalObject {
             }
         };
         button = new Button(buttonHandler, 0, 90, 290,"Play Again", 50);
-        button.setHeight(100);
-        button.setWidth(140);
+        button.setHeight(button.getHeight());
+        button.setWidth(button.getWidth());
         button.setFont("Monospaced");
         viewController.draw(button,2);
     }

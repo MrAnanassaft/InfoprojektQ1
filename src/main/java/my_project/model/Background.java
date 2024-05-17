@@ -26,7 +26,19 @@ public class Background extends GraphicalObject {
 
 
     }
+    public void drawS0(DrawTool drawTool){
 
+    }
+    public void drawS1(DrawTool drawTool){
 
+    }
+    public void drawS2(DrawTool drawTool) {
 
+    }
+    public void drawS3(DrawTool drawTool){
+
+    }
+    public void drawS4(DrawTool drawTool){
+
+    }
 }

@@ -6,7 +6,6 @@ import KAGO_framework.view.DrawTool;
 import my_project.control.ProgramController;
 import KAGO_framework.view.DrawFrame;
 import KAGO_framework.view.DrawingPanel;
-import my_project.model.StartButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +34,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
 
         Scene(ViewController viewController){
             drawingPanel = new DrawingPanel(viewController);
-            drawingPanel.setBackground(new Color(200, 200, 200));
+            drawingPanel.setBackground(new Color(218, 9, 9));
             drawables = new ArrayList<>();
             interactables = new ArrayList<>();
         }
@@ -386,8 +385,9 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
             Interactable tmpInteractable = iterator.next();
             tmpInteractable.mouseMoved(e);
         }
-        highlightStartButton(e);
+        //highlightStartButton(e);
         //highlightRestartButton(e);
+        highlightButtons(e);
     }
 
     @Override
@@ -424,7 +424,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
             tmpInteractable.keyReleased(e.getKeyCode());
         }
     }
-    public void highlightStartButton(MouseEvent e){
+    /*public void highlightStartButton(MouseEvent e){
         if(programController.startButton.button.mouseHovered(e)){
             programController.startButton.button.isTouched();
         }else{
@@ -438,8 +438,25 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
         }else{
             programController.restartButton.button.isNotTouched();
         }
+    }*/
+    public void highlightButtons(MouseEvent e){
+        if(programController.buttons != null){
+            for(int i = 0; i < programController.buttons.length; i++){
+                KAGO_framework.view.simple_gui.Button[] buttons = programController.buttons;
+                if(buttons[i] != null){
+                    if(buttons[i].mouseHovered(e)){
+                        buttons[i].isTouched();
+                    }else{
+                        buttons[i].isNotTouched();
+                    }
+                }
+            }
+        }
     }
     public static double lerp(double start, double end, double time) {
         return start * (1 - time) + end * time;
+    }
+    public int getSceneSize(){
+        return scenes.size();
     }
 }

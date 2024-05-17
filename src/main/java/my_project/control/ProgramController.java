@@ -1,7 +1,9 @@
 package my_project.control;
 
 import KAGO_framework.control.ViewController;
+import KAGO_framework.view.simple_gui.Button;
 import my_project.model.*;
+import my_project.model.buttons.*;
 
 public class ProgramController {
 
@@ -9,6 +11,10 @@ public class ProgramController {
     public static Player player1;
     public StartButton startButton;
     public RestartButton restartButton;
+    public SkinButton skinButton;
+    public MapButton mapButton;
+
+    public Button[] buttons = new Button[10];
     double timer;
     public static ViewController viewController;
     public ProgramController(ViewController viewController){
@@ -53,18 +59,30 @@ public class ProgramController {
     }
 
     public void startNewGame(){
-        viewController.createScene();
-        viewController.createScene();
-        viewController.createScene();
+        viewController.createScene(); // index 0 = start
+        viewController.createScene(); // index 1 = game
+        viewController.createScene(); // index 2 = end
+        viewController.createScene(); // index 3 = skins
+        viewController.createScene(); // index 4 = map
         viewController.showScene(0);
     }
     public void setScenesForStart(){
-        Background backgroundS1 = new Background(0, viewController);
-        viewController.draw(backgroundS1,0);
+        for(int i = 0; i< viewController.getSceneSize(); i++){
+            Background background = new Background(i, viewController);
+            viewController.draw(background,i);
+        }
         startButton = new StartButton(this);
+        buttons[0] = startButton.button;
         viewController.draw(startButton,0);
         restartButton = new RestartButton(this);
+        buttons[1] = restartButton.button;
         viewController.draw(restartButton,2);
+        skinButton = new SkinButton(this);
+        buttons[2] = skinButton.button;
+        viewController.draw(skinButton,0);
+        mapButton = new MapButton(this);
+        buttons[3] = mapButton.button;
+        viewController.draw(mapButton,0);
     }
     public void startGame(){
         player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69);

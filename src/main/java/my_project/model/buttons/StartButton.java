@@ -1,4 +1,4 @@
-package my_project.model;
+package my_project.model.buttons;
 
 import KAGO_framework.control.SoundController;
 import KAGO_framework.control.ViewController;
@@ -19,17 +19,11 @@ import java.util.ArrayList;
 
 import static my_project.control.ProgramController.viewController;
 
-public class StartButton extends GraphicalObject {
-    private ProgramController p;
-    public Button button;
-    private BufferedImage image;
-    private boolean wasPressed = false;
+public class StartButton extends Buttons {
 
 
     public StartButton(ProgramController p) {
-
-
-        this.p = p;
+        super(p);
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {
@@ -53,17 +47,13 @@ public class StartButton extends GraphicalObject {
         };
 
         button = new Button(buttonHandler, 0, 800, 400,"Start", 50);
-        button.setHeight(100);
-        button.setWidth(320);
+        button.setHeight(button.getHeight());
+        button.setWidth(button.getWidth());
         button.setFont("Monospaced");
         viewController.draw(button,0);
     }
 
-    public void test(){
-        int a = 200;
-        int b = 300;
 
-    }
     public void update(double dt){
 
     }

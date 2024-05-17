@@ -28,12 +28,27 @@ public class ProgramController {
         if(ViewController.isKeyDown(76)){ // K
             viewController.showScene(2);
         }
-        timer += dt;
+        //timer += dt;
         for (int i = 0; i <= Variable_Container.shots.size() - 1; i++){
-            Shot ball = Variable_Container.shots.get(i);
-            if (CollisionDetector.circleWithRectangle(ball.getX(), ball.getY(), ball.getRadius(), player.getX(), player.getY(), player.getWidth(), player.getHeight())){
+            Shot shot = Variable_Container.shots.get(i);
+            if ((CollisionDetector.circleWithRectangle(shot.getX(), shot.getY(), shot.getRadius(), player.getX(), player.getY(), player.getWidth(), player.getHeight()) && shot.shooter != player) || (CollisionDetector.circleWithRectangle(shot.getX(), shot.getY(), shot.getRadius(), player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight()) && shot.shooter != player1)){
+                if (shot.target == player){
+                    player1.health -= 2;
+
+                    player1.healthbarwidth -= 2;
+                }
+                if (shot.target == player1){
+                    player.health -= 2;
+
+                    player.healthbarwidth -= 2;
+                    player.healthbarx += 2;
+                }
+                viewController.removeDrawable(Variable_Container.shots.get(i));
+                Variable_Container.shots.remove(i);
+                i--;
 
             }
+
         }
     }
 
@@ -52,8 +67,12 @@ public class ProgramController {
         viewController.draw(restartButton,2);
     }
     public void startGame(){
-        Player player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, viewController,68, 65, 32, 69);
-        Player player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, viewController,39, 37, 155, 17);
+        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69);
+        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17);
+
+        player.setTarget(player1);
+        player1.setTarget(player);
+
         viewController.draw(player,1);
         viewController.register(player);
         viewController.draw(player1,1);

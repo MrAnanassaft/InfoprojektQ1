@@ -1,25 +1,28 @@
 package my_project.model;
 
 import KAGO_framework.control.ViewController;
-import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
-import my_project.Config;
+import my_project.control.ProgramController;
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 
 public class Player extends InteractiveGraphicalObject {
 
     //public final static int WINDOW_WIDTH = 600;
     //public final static int WINDOW_HEIGHT = 600 + 29;
 
+
+    String playerImageScar = "src/main/resources/graphic/Scar.png";
     private int velocity = 500;
     private double gravityConstant = 981;
     private double verticalVeloctiy = 0;
 
-    private double cooldown = 1;
+    private double cooldown = 0;
     private boolean touchedGrass = false;
+    private double maxcooldown = 0.15;
+    public double degree = 0;
 
     private boolean cooldowntimerboolean = false;
 
@@ -29,15 +32,20 @@ public class Player extends InteractiveGraphicalObject {
     private int shoot;
     public int healthbarwidth;
     public int healthbarx;
+    public int health;
+    private Player target;
+
+
     ViewController viewController;
 
-    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, ViewController viewController, int right, int left, int jump, int shoot) {
+    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, int health, ViewController viewController, int right, int left, int jump, int shoot) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.healthbarwidth = healthbarwidth;
         this.healthbarx = healthbarx;
+        this.health = health;
         this.right = right;
         this.left = left;
         this.jump = jump;
@@ -50,13 +58,12 @@ public class Player extends InteractiveGraphicalObject {
         drawTool.drawFilledRectangle(x,y,width,height);
         drawTool.setCurrentColor(new Color(0,0,0));
 
-        drawTool.setCurrentColor(new Color(255, 209, 209));
+        /*drawTool.setCurrentColor(new Color(255, 209, 209));
         drawTool.drawFilledRectangle(x,y,width,height);
-        drawTool.setCurrentColor(new Color(0,0,0));
+        drawTool.setCurrentColor(new Color(0,0,0));*/
 
         drawTool.setCurrentColor(new Color(185, 0, 0));
         drawTool.drawFilledRectangle(healthbarx, 10, healthbarwidth, 30);
-
         /*drawTool.drawLine(0,200,600,200);
         drawTool.drawLine(0,500,600,500);
         drawTool.drawLine(0,400,600,400);
@@ -64,10 +71,14 @@ public class Player extends InteractiveGraphicalObject {
         drawTool.drawLine(0,590,600,590);
         drawTool.drawLine(0,600,600,600);
         drawTool.drawLine(0,0,600,0);*/
+
+        setNewImage(playerImageScar);
+        drawTool.drawTransformedImage(getMyImage(), x + width / 2, y + height / 2, degree, 3);
     }
 
     public void update(double dt){
-       // System.out.println(healthbarx);
+        cooldown -= dt;
+        // System.out.println(healthbarx);
         /*System.out.println(Config.WINDOW_WIDTH);
         System.out.println(Config.WINDOW_HEIGHT);*/
 
@@ -100,20 +111,42 @@ public class Player extends InteractiveGraphicalObject {
         if(cooldowntimerboolean){
             y -= velocity * dt;
         }
-        if (ViewController.isKeyDown(shoot)){
+        if (ViewController.isKeyDown(shoot) && cooldown < 0){
+            cooldown = maxcooldown;
             shoot();
         }
     }
-    double magnitude = Math.sqrt(x * x + y * y);
 
-    double normX = x / magnitude;
-    double normY = y / magnitude;
+    public void setTarget(Player target) {
+        this.target = target;
+    }
 
     public void shoot(){
-        Shot shot = new Shot(x, y, normX, normY, 4, Shot.normplayer, Shot.playerTarget);
+        if (target == null){
+            return;
+        }
+
+        double magnitude = Math.sqrt((target.getX() - x) * (target.getX() - x) + (target.getY() - y) * (target.getY() - y));
+
+        double normX = (target.getX() - x) / magnitude;
+        double normY = (target.getY() - y) / magnitude;
+
+        double weaponlength = getMyImage().getWidth();
+        double weaponheight = getMyImage().getHeight();
+
+        degree = (-Math.atan2(target.getX() - x, target.getY() - y)) * 57.296 + 90;
+        if (degree >= 90 && degree <= 270){
+            playerImageScar = "src/main/resources/graphic/ReversedScar.png";
+        }else{
+            playerImageScar = "src/main/resources/graphic/Scar.png";
+        }
+
+        Shot shot = new Shot(x + width / 2 + normX * weaponlength, y + height / 2 + normY * weaponheight, normX, normY, 7, this, target, viewController);
         Variable_Container.shots.add(shot);
         viewController.draw(shot, 1);
     }
 
-
+    public double getDegree() {
+        return degree;
+    }
 }

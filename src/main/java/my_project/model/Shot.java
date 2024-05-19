@@ -11,12 +11,12 @@ import java.awt.*;
 
 public class Shot extends GraphicalObject {
 
-    double dirX = 0;
-    double dirY = 0;
+    private double dirX = 0;
+    private double dirY = 0;
     public Player shooter;
     public Player target;
-    double velocity = 2500;
-    ViewController viewController;
+    private double velocity = 2500;
+    private ViewController viewController;
 
 
 

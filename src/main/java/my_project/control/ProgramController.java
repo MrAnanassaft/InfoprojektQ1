@@ -13,6 +13,7 @@ public class ProgramController {
     public RestartButton restartButton;
     public SkinButton skinButton;
     public MapButton mapButton;
+    public WeaponButton weaponButton;
 
     public Button[] buttons = new Button[10];
     double timer;
@@ -84,6 +85,9 @@ public class ProgramController {
         mapButton = new MapButton(this);
         buttons[3] = mapButton.button;
         viewController.draw(mapButton,0);
+        weaponButton = new WeaponButton(this);
+        buttons[4] = weaponButton.button;
+        viewController.draw(weaponButton,0);
     }
     public void startGame(){
         player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69);

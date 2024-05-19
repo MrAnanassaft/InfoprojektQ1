@@ -36,7 +36,7 @@ public class Player extends InteractiveGraphicalObject {
     private Player target;
 
 
-    ViewController viewController;
+    public ViewController viewController;
 
     public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, int health, ViewController viewController, int right, int left, int jump, int shoot) {
         this.x = x;

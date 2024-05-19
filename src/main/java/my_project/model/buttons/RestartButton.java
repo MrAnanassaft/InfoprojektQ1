@@ -42,6 +42,7 @@ public class RestartButton extends Buttons {
         p.startButton.restart();
         p.viewController.removeAllDrawables();
         //p.enemies = new ArrayList<>();
+        p.buttons = new Button[10];
         p.startGame();
         p.setScenesForStart();
         p.viewController.showScene(0);

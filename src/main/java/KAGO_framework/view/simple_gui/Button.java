@@ -61,7 +61,7 @@ public class Button extends Label implements Interactable {
         super.draw(drawTool);
         if(isTouched){
             drawTool.setCurrentColor(Color.RED);
-            drawTool.drawRectangle(800,400,320,100);
+            drawTool.drawRectangle(this.x,this.y,this.getWidth(),this.getHeight());
         }
     }
 

@@ -7,10 +7,15 @@ import KAGO_framework.view.simple_gui.Button;
 import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.control.ProgramController;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public abstract class Buttons extends GraphicalObject {
     protected ProgramController p;
     public Button button;
-    //private BufferedImage image;
+    protected BufferedImage image;
     protected boolean wasPressed = false;
     public Buttons(ProgramController p){
         this.p = p;
@@ -18,5 +23,12 @@ public abstract class Buttons extends GraphicalObject {
 
     public void draw(DrawTool drawTool){
 
+    }
+    protected void setPicture(String pathToImage) {
+        try {
+            image = ImageIO.read(new File(pathToImage));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

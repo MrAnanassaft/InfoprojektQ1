@@ -1,6 +1,7 @@
 package my_project.model.buttons;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
+import KAGO_framework.view.DrawTool;
 import KAGO_framework.view.simple_gui.Button;
 import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.control.ProgramController;
@@ -12,6 +13,7 @@ public class RestartButton extends Buttons {
 
     public RestartButton(ProgramController p) {
         super(p);
+        setPicture("src/main/resources/graphic/buttons/Playagainbutton.png");
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {
@@ -32,10 +34,14 @@ public class RestartButton extends Buttons {
             }
         };
         button = new Button(buttonHandler, 0, 90, 290,"Play Again", 50);
-        button.setHeight(button.getHeight());
-        button.setWidth(button.getWidth());
+        button.setHeight(image.getHeight());
+        button.setWidth(image.getWidth());
         button.setFont("Monospaced");
         viewController.draw(button,2);
+    }
+
+    public void draw(DrawTool drawTool){
+        drawTool.drawImage(image,90,290);
     }
     private void restartGame() {
         remove();

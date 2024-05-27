@@ -14,7 +14,7 @@ public class Player extends InteractiveGraphicalObject {
     //public final static int WINDOW_HEIGHT = 600 + 29;
 
 
-    String playerImageScar = "src/main/resources/graphic/Scar.png";
+    String playerImageScar = "src/main/resources/graphic/weapons/Scar.png";
     private int velocity = 500;
     private double gravityConstant = 981;
     private double verticalVeloctiy = 0;
@@ -136,9 +136,9 @@ public class Player extends InteractiveGraphicalObject {
 
         degree = (-Math.atan2(target.getX() - x, target.getY() - y)) * 57.296 + 90;
         if (degree >= 90 && degree <= 270){
-            playerImageScar = "src/main/resources/graphic/ReversedScar.png";
+            playerImageScar = "src/main/resources/graphic/weapons/Scarreversed.png";
         }else{
-            playerImageScar = "src/main/resources/graphic/Scar.png";
+            playerImageScar = "src/main/resources/graphic/weapons/Scar.png";
         }
 
         Shot shot = new Shot(x + width / 2 + normX * weaponlength, y + height / 2 + normY * weaponheight, normX, normY, 7, this, target, viewController);

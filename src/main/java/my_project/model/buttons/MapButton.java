@@ -10,6 +10,7 @@ import static my_project.control.ProgramController.viewController;
 public class MapButton extends Buttons{
     public MapButton(ProgramController p){
         super(p);
+        setPicture("src/main/resources/graphic/buttons/Mapselectbutton.png");
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {
@@ -30,9 +31,9 @@ public class MapButton extends Buttons{
             }
         };
 
-        button = new Button(buttonHandler, 0, 1200, 600,"Map", 50);
-        button.setHeight(button.getHeight());
-        button.setWidth(button.getWidth());
+        button = new Button(buttonHandler, 0, 1200, 650,image,false);
+        button.setHeight(image.getHeight());
+        button.setWidth(image.getWidth());
         button.setFont("Monospaced");
         viewController.draw(button,0);
     }

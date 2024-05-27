@@ -31,4 +31,7 @@ public abstract class Buttons extends GraphicalObject {
             throw new RuntimeException(e);
         }
     }
+    public void notPressed(){
+        wasPressed = false;
+    }
 }

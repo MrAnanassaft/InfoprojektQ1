@@ -24,6 +24,7 @@ public class StartButton extends Buttons {
 
     public StartButton(ProgramController p) {
         super(p);
+        setPicture("src/main/resources/graphic/buttons/Startbutton.png");
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {
@@ -46,9 +47,9 @@ public class StartButton extends Buttons {
             }
         };
 
-        button = new Button(buttonHandler, 0, 800, 400,"Start", 50);
-        button.setHeight(button.getHeight());
-        button.setWidth(button.getWidth());
+        button = new Button(buttonHandler,0,760,400,image,false);
+        button.setHeight(image.getHeight());
+        button.setWidth(image.getWidth());
         button.setFont("Monospaced");
         viewController.draw(button,0);
     }

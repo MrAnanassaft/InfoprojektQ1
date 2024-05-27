@@ -10,6 +10,7 @@ import static my_project.control.ProgramController.viewController;
 public class WeaponButton extends Buttons{
     public WeaponButton(ProgramController p){
         super(p);
+        setPicture("src/main/resources/graphic/buttons/Gunselectbutton.png");
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {
@@ -29,9 +30,9 @@ public class WeaponButton extends Buttons{
                 return ProgramController.viewController;
             }
         };
-        button = new Button(buttonHandler, 0, 800, 600,"Weapons", 50);
-        button.setHeight(button.getHeight());
-        button.setWidth(button.getWidth());
+        button = new Button(buttonHandler, 0, 760, 650,image,false);
+        button.setHeight(image.getHeight());
+        button.setWidth(image.getWidth());
         button.setFont("Monospaced");
         viewController.draw(button,0);
     }

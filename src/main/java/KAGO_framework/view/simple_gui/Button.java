@@ -6,7 +6,7 @@ import KAGO_framework.view.DrawTool;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-
+import static my_project.control.ProgramController.viewController;
 /**
  * Repräsentiert ein anklickbares Label
  */
@@ -19,7 +19,6 @@ public class Button extends Label implements Interactable {
     private int actionCode;
     protected boolean isHovered;
     private boolean isTouched = false;
-
     /**
      * Erzeugt einen neuen, simplen und nicht sonderlich schönen, aber funktionalen Button
      * Entspricht einem anklickbaren Label
@@ -51,8 +50,8 @@ public class Button extends Label implements Interactable {
     public Button(ButtonHandler bH, int actionCode, double x, double y, BufferedImage image, boolean hasBorder){
         super(x,y,image,hasBorder);
         buttonHandler = bH;
-        buttonHandler.getViewController().draw(this);
-        buttonHandler.getViewController().register(this);
+        buttonHandler.getViewController().draw(this,buttonHandler.getSceneIndex());
+        buttonHandler.getViewController().register(this,buttonHandler.getSceneIndex());
         this.actionCode = actionCode;
     }
 
@@ -60,8 +59,10 @@ public class Button extends Label implements Interactable {
     public void draw(DrawTool drawTool) {
         super.draw(drawTool);
         if(isTouched){
+            drawTool.setLineWidth(4);
             drawTool.setCurrentColor(Color.RED);
             drawTool.drawRectangle(this.x,this.y,this.getWidth(),this.getHeight());
+            drawTool.setLineWidth(1);
         }
     }
 

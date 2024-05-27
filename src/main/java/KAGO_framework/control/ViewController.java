@@ -412,6 +412,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
             Interactable tmpInteractable = iterator.next();
             tmpInteractable.keyPressed(e.getKeyCode());
         }
+        //System.out.println(e.getKeyCode());
     }
 
     @Override
@@ -458,5 +459,8 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
     }
     public int getSceneSize(){
         return scenes.size();
+    }
+    public int getSceneIndex(){
+        return currentScene;
     }
 }

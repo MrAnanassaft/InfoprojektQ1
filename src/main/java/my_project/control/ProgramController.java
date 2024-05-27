@@ -35,6 +35,20 @@ public class ProgramController {
         if(ViewController.isKeyDown(76)){ // K
             viewController.showScene(2);
         }
+        if(ViewController.isKeyDown(27)){
+            if(viewController.getSceneIndex() == 3){
+                viewController.showScene(0);
+                skinButton.notPressed();
+            }
+            if(viewController.getSceneIndex() == 4){
+                viewController.showScene(0);
+                mapButton.notPressed();
+            }
+            if(viewController.getSceneIndex() == 5){
+                viewController.showScene(0);
+                weaponButton.notPressed();
+            }
+        }
         //timer += dt;
         for (int i = 0; i <= Variable_Container.shots.size() - 1; i++){
             Shot shot = Variable_Container.shots.get(i);

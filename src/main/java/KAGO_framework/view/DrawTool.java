@@ -1,9 +1,13 @@
 package KAGO_framework.view;
 
+import KAGO_framework.control.ViewController;
+import my_project.control.ProgramController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
+import static my_project.control.ProgramController.viewController;
 
 /**
  * Diese Klasse dient als vereinfachte Schnittstelle zum Zeichnen. Es handelt sich um eine BlackBox fuer die
@@ -11,7 +15,6 @@ import java.awt.image.BufferedImage;
  * Vorgegebene Klasse des Frameworks. Modifikation auf eigene Gefahr.
  */
 public class DrawTool {
-
     // Referenzen
     private Graphics2D graphics2D; //java-spezifisches Objekt zum Arbeiten mit 2D-Grafik
     private JComponent parent;
@@ -23,7 +26,10 @@ public class DrawTool {
      * @param y Die y-Koordinate der oberen linken Ecke
      */
     public void drawImage(BufferedImage bI, double x, double y){
+        //int current = viewController.getSceneIndex();
+        //viewController.showScene(sceneIndex);
         if (graphics2D!= null) graphics2D.drawImage(bI, (int)x, (int)y, null);
+        //viewController.showScene(current);
     }
 
     /**
@@ -366,5 +372,7 @@ public class DrawTool {
     public JComponent getParent(){
         return parent;
     }
-
+    public ViewController getViewController(){
+        return viewController;
+    }
 }

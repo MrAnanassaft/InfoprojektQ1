@@ -33,16 +33,13 @@ public class RestartButton extends Buttons {
                 return ProgramController.viewController;
             }
         };
-        button = new Button(buttonHandler, 0, 90, 290,"Play Again", 50);
+        button = new Button(buttonHandler, 0, 90, 290,image,false);
         button.setHeight(image.getHeight());
         button.setWidth(image.getWidth());
         button.setFont("Monospaced");
-        viewController.draw(button,2);
+        //viewController.draw(button,2);
     }
 
-    public void draw(DrawTool drawTool){
-        drawTool.drawImage(image,90,290);
-    }
     private void restartGame() {
         remove();
         p.startButton.restart();

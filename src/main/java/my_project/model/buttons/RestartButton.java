@@ -33,7 +33,7 @@ public class RestartButton extends Buttons {
                 return ProgramController.viewController;
             }
         };
-        button = new Button(buttonHandler, 0, 90, 290,image,false);
+        button = new Button(buttonHandler, 0, 760,400,image,false);
         button.setHeight(image.getHeight());
         button.setWidth(image.getWidth());
         button.setFont("Monospaced");

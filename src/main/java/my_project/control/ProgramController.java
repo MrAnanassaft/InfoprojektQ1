@@ -15,6 +15,9 @@ public class ProgramController {
     public MapButton mapButton;
     public WeaponButton weaponButton;
 
+    public static boolean selectScar = false;
+    public static boolean selectSniper = false;
+
     public Button[] buttons = new Button[10];
     double timer;
     public static ViewController viewController;
@@ -26,6 +29,13 @@ public class ProgramController {
         setScenesForStart();
     }
     public void updateProgram(double dt){
+        if(ViewController.isKeyDown(77)){ // M
+           selectScar = true;
+        }
+        if(ViewController.isKeyDown(78)){ // N
+            selectSniper = true;
+        }
+
         if(ViewController.isKeyDown(74)){ // J
             viewController.showScene(0);
         }
@@ -54,15 +64,28 @@ public class ProgramController {
             Shot shot = Variable_Container.shots.get(i);
             if ((CollisionDetector.circleWithRectangle(shot.getX(), shot.getY(), shot.getRadius(), player.getX(), player.getY(), player.getWidth(), player.getHeight()) && shot.shooter != player) || (CollisionDetector.circleWithRectangle(shot.getX(), shot.getY(), shot.getRadius(), player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight()) && shot.shooter != player1)){
                 if (shot.target == player){
-                    player1.health -= 2;
+                    if (selectScar){
+                        player1.health -= 2;
 
-                    player1.healthbarwidth -= 2;
+                        player1.healthbarwidth -= 2;
+                    }else{
+                        player1.health -= 15;
+
+                        player1.healthbarwidth -= 15;
+                    }
                 }
                 if (shot.target == player1){
-                    player.health -= 2;
+                    if (selectScar){
+                        player.health -= 2;
 
-                    player.healthbarwidth -= 2;
-                    player.healthbarx += 2;
+                        player.healthbarwidth -= 2;
+                        player.healthbarx += 2;
+                    }else{
+                        player.health -= 15;
+
+                        player.healthbarwidth -= 15;
+                        player.healthbarx += 15;
+                    }
                 }
                 viewController.removeDrawable(Variable_Container.shots.get(i));
                 Variable_Container.shots.remove(i);

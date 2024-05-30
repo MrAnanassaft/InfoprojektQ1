@@ -44,6 +44,7 @@ public class Player extends InteractiveGraphicalObject {
     private double maxScarCooldown = 0.15;
     private Player target;
 
+    private ArrayList<Build> allBuildings;
 
     public ViewController viewController;
     public ProgramController programController;
@@ -61,6 +62,7 @@ public class Player extends InteractiveGraphicalObject {
         this.jump = jump;
         this.shoot = shoot;
         this.viewController = viewController;
+        this.allBuildings = allBuildings;
     }
 
     public void draw(DrawTool drawTool){
@@ -103,14 +105,26 @@ public class Player extends InteractiveGraphicalObject {
         // System.out.println(healthbarx);
         /*System.out.println(Config.WINDOW_WIDTH);
         System.out.println(Config.WINDOW_HEIGHT);*/
+        boolean collidesWithBuild = false;
+        double buildY = 0;
+        for (Build build: allBuildings) {
+            if(build.colidesWithPlayer(this)){
+                collidesWithBuild = true;
+                buildY = build.getY();
+            }
+        }
 
-        if(y < viewController.getDrawFrame().getHeight() - height){
+        if(y < viewController.getDrawFrame().getHeight() - height && !collidesWithBuild){
             y += verticalVeloctiy * dt;
             verticalVeloctiy += gravityConstant * dt;
             touchedGrass = false;
         }else {
             verticalVeloctiy = 0;
-            y = viewController.getDrawFrame().getHeight() - height;
+            if(buildY != 0){
+                y = buildY - height;
+            }else{
+                y = viewController.getDrawFrame().getHeight() - height;
+            }
             touchedGrass = true;
             cooldowntimerboolean = false;
         }
@@ -142,6 +156,11 @@ public class Player extends InteractiveGraphicalObject {
             }
 
             shoot();
+        }
+        if(ViewController.isKeyDown(KeyCode.ENTER.getCode())){
+            Floor floor = new Floor(x + 150 - (x % 150),y + 150 - (y % 150));
+            allBuildings.add(floor);
+            viewController.draw(floor);
         }
     }
 

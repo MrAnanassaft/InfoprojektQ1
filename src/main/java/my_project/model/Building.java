@@ -14,6 +14,8 @@ public class Building extends GraphicalObject {
     }
 
     public void update(double dt){
-
+        double timer = 0;
     }
 }
+
+//hello hihihihaw

@@ -3,10 +3,14 @@ package my_project.model;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
+import javafx.scene.input.KeyCode;
 import my_project.control.ProgramController;
+import my_project.model.Buildings.Build;
+import my_project.model.Buildings.Floor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Player extends InteractiveGraphicalObject {
 
@@ -44,7 +48,7 @@ public class Player extends InteractiveGraphicalObject {
     public ViewController viewController;
     public ProgramController programController;
 
-    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, int health, ViewController viewController, int right, int left, int jump, int shoot) {
+    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, int health, ViewController viewController, int right, int left, int jump, int shoot, ArrayList<Build> allBuildings) {
         this.x = x;
         this.y = y;
         this.width = width;

@@ -3,7 +3,10 @@ package my_project.control;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.view.simple_gui.Button;
 import my_project.model.*;
+import my_project.model.Buildings.Build;
 import my_project.model.buttons.*;
+
+import java.util.ArrayList;
 
 public class ProgramController {
 
@@ -19,6 +22,10 @@ public class ProgramController {
     public static boolean selectSniper = false;
 
     public Button[] buttons = new Button[10];
+
+    private ArrayList<Build> allBuildings = new ArrayList<>();
+
+
     double timer;
     public static ViewController viewController;
     public ProgramController(ViewController viewController){
@@ -28,6 +35,7 @@ public class ProgramController {
         startNewGame();
         setScenesForStart();
     }
+
     public void updateProgram(double dt){
         if(ViewController.isKeyDown(77)){ // M
            selectScar = true;
@@ -127,8 +135,10 @@ public class ProgramController {
         viewController.draw(weaponButton,0);
     }
     public void startGame(){
-        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69);
-        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17);
+        allBuildings = new ArrayList<>();
+
+        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings);
+        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings);
 
         player.setTarget(player1);
         player1.setTarget(player);

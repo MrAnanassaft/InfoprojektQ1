@@ -1,5 +1,6 @@
 package my_project.model;
 
+import KAGO_framework.Config;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
@@ -9,7 +10,11 @@ import my_project.model.Buildings.Build;
 import my_project.model.Buildings.Floor;
 import my_project.model.Buildings.Stair;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Player extends InteractiveGraphicalObject {
@@ -39,6 +44,7 @@ public class Player extends InteractiveGraphicalObject {
     private double maxSniperCooldown = 1;
     private double maxScarCooldown = 0.15;
     private Player target;
+    private BufferedImage weapon;
 
     private ArrayList<Build> allBuildings;
 
@@ -62,9 +68,9 @@ public class Player extends InteractiveGraphicalObject {
     }
 
     public void draw(DrawTool drawTool) {
-        drawTool.setCurrentColor(new Color(225, 209, 209));
-        drawTool.drawFilledRectangle(x, y, width, height);
-        drawTool.setCurrentColor(new Color(0, 0, 0));
+        /*drawTool.setCurrentColor(new Color(225, 209, 209));
+        drawTool.drawFilledRectangle(x, y, this.getWidth(), this.getHeight());
+        drawTool.setCurrentColor(new Color(0, 0, 0));*/
 
         drawTool.setCurrentColor(new Color(185, 0, 0));
         drawTool.drawFilledRectangle(healthbarx, 10, healthbarwidth, 30);
@@ -170,8 +176,8 @@ public class Player extends InteractiveGraphicalObject {
         double normX = (target.getX() - x) / magnitude;
         double normY = (target.getY() - y) / magnitude;
 
-        double weaponlength = getMyImage().getWidth();
-        double weaponheight = getMyImage().getHeight();
+        double weaponlength = weapon.getWidth();
+        double weaponheight = weapon.getHeight();
 
         degree = (-Math.atan2(target.getX() - x, target.getY() - y)) * 57.296 + 90;
         if (degree >= 90 && degree <= 270) {
@@ -185,5 +191,12 @@ public class Player extends InteractiveGraphicalObject {
         Shot shot = new Shot(x + width / 2 + normX * weaponlength, y + height / 2 + normY * weaponheight, normX, normY, 7, this, target, viewController);
         Variable_Container.shots.add(shot);
         viewController.draw(shot, 1);
+    }
+    private void setWeaponImage(String pathToImage){
+        try {
+            weapon = ImageIO.read(new File(pathToImage));
+        } catch (IOException e) {
+            if (Config.INFO_MESSAGES) System.out.println("Laden eines Bildes fehlgeschlagen: " + pathToImage);
+        }
     }
 }

@@ -33,23 +33,6 @@ public class ProgramController {
         this.viewController = viewController;
     }
     public void startProgram() {
-        ButtonHandler buttonHandler = new ButtonHandler() {
-            @Override
-            public void processButtonClick(int code) {
-
-            }
-
-            @Override
-            public int getSceneIndex() {
-                return 0;
-            }
-
-            @Override
-            public ViewController getViewController() {
-                return viewController;
-            }
-        };
-        Button button = new Button(buttonHandler,0,0,0,"",20);
         startNewGame();
         setScenesForStart();
     }
@@ -78,11 +61,11 @@ public class ProgramController {
             }
             if(viewController.getSceneIndex() == 4){
                 viewController.showScene(0);
-                mapButton.notPressed();
+                weaponButton.notPressed();
             }
             if(viewController.getSceneIndex() == 5){
                 viewController.showScene(0);
-                weaponButton.notPressed();
+                mapButton.notPressed();
             }
         }
         //timer += dt;
@@ -127,9 +110,11 @@ public class ProgramController {
         viewController.createScene(); // index 1 = game
         viewController.createScene(); // index 2 = end
         viewController.createScene(); // index 3 = skins
-        viewController.createScene(); // index 4 = map
-        viewController.createScene(); // index 5 = weapon
+        viewController.createScene(); // index 4 = weapon
+        viewController.createScene(); // index 5 = map
         viewController.showScene(0);
+        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, false, false, false, false, false, false);
+        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings, false, false, false, false, false, false);
     }
     public void setScenesForStart(){
         for(int i = 0; i< viewController.getSceneSize(); i++){
@@ -145,12 +130,12 @@ public class ProgramController {
         skinButton = new SkinButton(this);
         Variable_Container.buttons[2] = skinButton.button;
         viewController.draw(skinButton,0);
-        mapButton = new MapButton(this);
-        Variable_Container.buttons[3] = mapButton.button;
-        viewController.draw(mapButton,0);
         weaponButton = new WeaponButton(this);
-        Variable_Container.buttons[4] = weaponButton.button;
+        Variable_Container.buttons[3] = weaponButton.button;
         viewController.draw(weaponButton,0);
+        mapButton = new MapButton(this);
+        Variable_Container.buttons[4] = mapButton.button;
+        viewController.draw(mapButton,0);
 
     }
     public void startGame(){

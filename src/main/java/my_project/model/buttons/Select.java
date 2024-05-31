@@ -20,12 +20,28 @@ public class Select extends Buttons {
         this.scene = scene;
         this.x = x;
         this.y = y;
+        this.scale = scale;
+        //this.whatButton = whatButton;
         setPicture(imagePath);
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {
                 if(!wasPressed){
                     wasPressed = true;
+                    if(code == 1){
+                        SkinButton.useButtons(imagePath);
+                        SkinButton.isPlayer1 = false;
+                        wasPressed = false;
+                    }
+                    if(code == 2) {
+                        WeaponButton.useButtons(imagePath);
+                        WeaponButton.isPlayer1 = false;
+                        wasPressed = false;
+                    }
+                    if(code == 3){
+                        MapButton.useButtons(imagePath);
+                        wasPressed = false;
+                    }
                 }
             }
 
@@ -57,16 +73,8 @@ public class Select extends Buttons {
         }
         drawTool.drawTransformedImage(image,x+tempX,y+tempY,0,scale);
     }
-
-    /*
-        Scale = 1, im1: x = 300, y = 400;  im2: x = 700, y = 400;
-        Scale = 2, im1: x = 280, y = 390;  im2: x = 670, y = 390;
-        Scale = 3, im1: x = 240, y = 370;  im2: x = 610, y = 370;
-        Scale = 4, im1: x = 180, y = 340;  im2: x = 520, y = 340;
-        Scale = 5, im1: x = 100, y = 300;  im2: x = 400, y = 300;
-        Result: im1: x = x - scale*20 - scale-1 * 20
-
-        im1 : width = 40, heigth = 20
-        im2 : width = 60, heigth = 20
-     */
+    public void gotClicked(DrawTool drawTool){
+        drawTool.setCurrentColor(new Color(12, 12, 68, 37));
+        drawTool.drawFilledRectangle(x,y, getWidth(), getHeight());
+    }
 }

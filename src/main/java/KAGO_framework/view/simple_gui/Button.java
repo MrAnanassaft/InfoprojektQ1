@@ -2,6 +2,8 @@ package KAGO_framework.view.simple_gui;
 
 import KAGO_framework.control.Interactable;
 import KAGO_framework.view.DrawTool;
+import my_project.control.ProgramController;
+import my_project.model.Variable_Container;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -14,7 +16,6 @@ public class Button extends Label implements Interactable {
 
     //Referenzen
     private ButtonHandler buttonHandler;
-
     //Attribute
     private int actionCode;
     protected boolean isHovered;
@@ -81,7 +82,15 @@ public class Button extends Label implements Interactable {
         double mouseX = e.getX();
         double mouseY = e.getY();
         if(mouseX > x && mouseX < x+width && mouseY > y && mouseY < y+height){
-            buttonHandler.processButtonClick(actionCode);
+            if(viewController.getSceneIndex() == 3){
+                buttonHandler.processButtonClick(1);
+            }else if(viewController.getSceneIndex() == 4){
+                buttonHandler.processButtonClick(2);
+            }else if(viewController.getSceneIndex() == 5){
+                buttonHandler.processButtonClick(3);
+            }else {
+                buttonHandler.processButtonClick(actionCode);
+            }
         }
     }
 

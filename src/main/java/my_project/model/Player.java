@@ -7,16 +7,12 @@ import javafx.scene.input.KeyCode;
 import my_project.control.ProgramController;
 import my_project.model.Buildings.Build;
 import my_project.model.Buildings.Floor;
+import my_project.model.Buildings.Stair;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Player extends InteractiveGraphicalObject {
-
-    //public final static int WINDOW_WIDTH = 600;
-    //public final static int WINDOW_HEIGHT = 600 + 29;
-
 
     private String playerImageScar = "src/main/resources/graphic/weapons/Scar.png";
     private String playerImageSniper = "src/main/resources/graphic/weapons/Sniper.png";
@@ -67,22 +63,11 @@ public class Player extends InteractiveGraphicalObject {
 
     public void draw(DrawTool drawTool) {
         drawTool.setCurrentColor(new Color(225, 209, 209));
-        drawTool.drawFilledRectangle(x,y,width,height);
-        drawTool.setCurrentColor(new Color(0,0,0));
-
-        /*drawTool.setCurrentColor(new Color(255, 209, 209));
-        drawTool.drawFilledRectangle(x,y,width,height);
-        drawTool.setCurrentColor(new Color(0,0,0));*/
+        drawTool.drawFilledRectangle(x, y, width, height);
+        drawTool.setCurrentColor(new Color(0, 0, 0));
 
         drawTool.setCurrentColor(new Color(185, 0, 0));
         drawTool.drawFilledRectangle(healthbarx, 10, healthbarwidth, 30);
-        /*drawTool.drawLine(0,200,600,200);
-        drawTool.drawLine(0,500,600,500);
-        drawTool.drawLine(0,400,600,400);
-        drawTool.setCurrentColor(new Color(255,0,0));
-        drawTool.drawLine(0,590,600,590);
-        drawTool.drawLine(0,600,600,600);
-        drawTool.drawLine(0,0,600,0);*/
 
         if (programController.selectScar) {
             setNewImage(playerImageScar);
@@ -102,9 +87,6 @@ public class Player extends InteractiveGraphicalObject {
 
     public void update(double dt) {
         cooldown -= dt;
-        // System.out.println(healthbarx);
-        /*System.out.println(Config.WINDOW_WIDTH);
-        System.out.println(Config.WINDOW_HEIGHT);*/
         boolean collidesWithBuild = false;
         double playerY = 0;
         double buildY = 0;
@@ -141,11 +123,6 @@ public class Player extends InteractiveGraphicalObject {
             touchedGrass = true;
             cooldowntimerboolean = false;
         }
-        /*System.out.println(Config.WINDOW_HEIGHT -40- height);
-        System.out.println(Config.WINDOW_HEIGHT-40);
-        System.out.println(height);
-        System.out.println(y + 100);*/
-        //System.out.println(WINDOW_HEIGHT);
 
         if (ViewController.isKeyDown(right)) { // d
             x += velocity * dt;

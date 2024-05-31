@@ -133,6 +133,7 @@ public class ProgramController {
         weaponButton = new WeaponButton(this);
         Variable_Container.buttons[4] = weaponButton.button;
         viewController.draw(weaponButton,0);
+
     }
     public void startGame(){
         allBuildings = new ArrayList<>();
@@ -151,6 +152,3 @@ public class ProgramController {
     }
 
 }
-
-    //Player player = new Player(100, 100, 100, 100, 200, 20, viewController,68, 65, 32);
-    //Player player1 = new Player( 200, 200, 100, 100, 200, 1705, viewController,39, 37, 155);

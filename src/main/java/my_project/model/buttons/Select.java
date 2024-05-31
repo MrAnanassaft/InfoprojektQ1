@@ -5,46 +5,50 @@ import KAGO_framework.view.DrawTool;
 import KAGO_framework.view.simple_gui.Button;
 import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.control.ProgramController;
-import my_project.model.Variable_Container;
+import my_project.model.buttons.Buttons;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 import static my_project.control.ProgramController.viewController;
 
-public class WeaponButton extends Buttons{
-    private String[] pathToImage = new String[2];
-    public WeaponButton(ProgramController p){
+public class Select extends Buttons {
+    private int scene;
+
+    public Select(ProgramController p, int scene, String imagePath, double x, double y,double width, double height){
         super(p);
-        setPicture("src/main/resources/graphic/buttons/Gunselectbutton.png");
-        pathToImage[0] = "src/main/resources/graphic/weapons/Scar.png";
-        pathToImage[1] = "src/main/resources/graphic/weapons/Sniper.png";
+        this.scene = scene;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        setPicture(imagePath);
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {
-                if(!wasPressed) {
+                if(!wasPressed){
                     wasPressed = true;
-                    viewController.showScene(5);
-                    create(2,5,300,400,400,pathToImage,image.getWidth(),image.getHeight());
                 }
             }
 
             @Override
             public int getSceneIndex() {
-                return 0;
+                return scene;
             }
 
             @Override
             public ViewController getViewController() {
-                return ProgramController.viewController;
+                return viewController;
             }
         };
-        button = new Button(buttonHandler, 0, 760, 650,image,false);
+        button = new Button(buttonHandler,0,x,y,image,true);
         button.setHeight(image.getHeight());
         button.setWidth(image.getWidth());
-        button.setFont("Monospaced");
-        viewController.draw(button,0);
+        button.setFont("Monospace");
+        viewController.draw(button,scene);
     }
 
-
+    public void draw(DrawTool drawTool) {
+        drawTool.setCurrentColor(Color.RED);
+        drawTool.drawRectangle(x, y, width, height);
+    }
 }

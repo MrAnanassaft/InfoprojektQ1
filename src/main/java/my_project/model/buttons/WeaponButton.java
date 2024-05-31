@@ -25,7 +25,7 @@ public class WeaponButton extends Buttons{
                 if(!wasPressed) {
                     wasPressed = true;
                     viewController.showScene(5);
-                    create(2,5,300,400,400,pathToImage,image.getWidth(),image.getHeight());
+                    create(2,5,300,400,400,pathToImage);
                 }
             }
 

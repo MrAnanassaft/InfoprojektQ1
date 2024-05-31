@@ -16,7 +16,7 @@ public class Stair extends Build {
         if(direction == LEFT){
             dx = x - player.getX();
         }else{
-            dx = player.getX() + width - x;
+            dx = player.getX() + player.getWidth() - x;
         }
         return y - dx - player.getHeight();
     }
@@ -28,7 +28,7 @@ public class Stair extends Build {
 
     @Override
     public void draw(DrawTool drawTool) {
-        drawTool.setLineWidth(15);
+        drawTool.setLineWidth(1);
         drawTool.drawLine(x,y,x + 150 * direction,y-150);
     }
 }

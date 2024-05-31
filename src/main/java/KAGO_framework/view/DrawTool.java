@@ -55,6 +55,8 @@ public class DrawTool {
             }
             transform.rotate( Math.toRadians(degrees), bI.getWidth()/ (double) 2, bI.getHeight()/ (double) 2 );
             graphics2D.drawImage(bI, transform, null);
+            //System.out.println(transform.getTranslateX());
+            //System.out.println(transform.getTranslateY());
         }
     }
 

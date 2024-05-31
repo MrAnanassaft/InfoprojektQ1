@@ -2,6 +2,7 @@ package my_project.control;
 
 import KAGO_framework.control.ViewController;
 import KAGO_framework.view.simple_gui.Button;
+import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.model.*;
 import my_project.model.Buildings.Build;
 import my_project.model.buttons.*;
@@ -32,6 +33,23 @@ public class ProgramController {
         this.viewController = viewController;
     }
     public void startProgram() {
+        ButtonHandler buttonHandler = new ButtonHandler() {
+            @Override
+            public void processButtonClick(int code) {
+
+            }
+
+            @Override
+            public int getSceneIndex() {
+                return 0;
+            }
+
+            @Override
+            public ViewController getViewController() {
+                return viewController;
+            }
+        };
+        Button button = new Button(buttonHandler,0,0,0,"",20);
         startNewGame();
         setScenesForStart();
     }

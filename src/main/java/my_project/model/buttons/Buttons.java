@@ -37,10 +37,10 @@ public abstract class Buttons extends GraphicalObject {
     public void notPressed(){
         wasPressed = false;
     }
-    public void create(int amount, int scene, double x, double y, double diff, String[] string,double width, double height){
+    public void create(int amount, int scene, double x, double y, double diff, String[] string){
         for(int i = 0; i < amount; i++){
             if(string[i] != null) {
-                Select select = new Select(p, scene, string[i], x + i*diff, y,width,height);
+                Select select = new Select(p, scene, string[i], x + i*diff, y);
                 Variable_Container.selects.add(select.button);
                 viewController.draw(select, scene);
             }

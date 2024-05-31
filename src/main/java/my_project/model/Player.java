@@ -65,7 +65,7 @@ public class Player extends InteractiveGraphicalObject {
         this.allBuildings = allBuildings;
     }
 
-    public void draw(DrawTool drawTool){
+    public void draw(DrawTool drawTool) {
         drawTool.setCurrentColor(new Color(225, 209, 209));
         drawTool.drawFilledRectangle(x,y,width,height);
         drawTool.setCurrentColor(new Color(0,0,0));
@@ -84,45 +84,58 @@ public class Player extends InteractiveGraphicalObject {
         drawTool.drawLine(0,600,600,600);
         drawTool.drawLine(0,0,600,0);*/
 
-        if (programController.selectScar){
+        if (programController.selectScar) {
             setNewImage(playerImageScar);
             drawTool.drawTransformedImage(getMyImage(), x + width / 2, y + height / 2, degree, 3);
             scar = true;
-        }else{
+        } else {
             scar = false;
         }
-        if (programController.selectSniper){
+        if (programController.selectSniper) {
             setNewImage(playerImageSniper);
             drawTool.drawTransformedImage(getMyImage(), x + width / 2, y + height / 2, degree, 3);
             sniper = true;
-        }else{
+        } else {
             sniper = false;
         }
     }
 
-    public void update(double dt){
+    public void update(double dt) {
         cooldown -= dt;
         // System.out.println(healthbarx);
         /*System.out.println(Config.WINDOW_WIDTH);
         System.out.println(Config.WINDOW_HEIGHT);*/
         boolean collidesWithBuild = false;
+        double playerY = 0;
         double buildY = 0;
-        for (Build build: allBuildings) {
-            if(build.colidesWithPlayer(this)){
+        for (Build build : allBuildings) {
+            if (build.colidesWithPlayer(this)) {
                 collidesWithBuild = true;
                 buildY = build.getY();
+                if (build instanceof Floor) {
+                    if (y > build.getY()) {
+                        playerY = build.getY() + 15;
+                    } else {
+                        playerY = build.getY() - height;
+                    }
+                } else if (build instanceof Stair) {
+                    Stair stair = (Stair) build;
+                    buildY = stair.getPlayerY(this);
+                    playerY = buildY;
+                }
+
             }
         }
 
-        if(y < viewController.getDrawFrame().getHeight() - height && !collidesWithBuild){
+        if (y < viewController.getDrawFrame().getHeight() - height && !collidesWithBuild) {
             y += verticalVeloctiy * dt;
             verticalVeloctiy += gravityConstant * dt;
             touchedGrass = false;
-        }else {
+        } else {
             verticalVeloctiy = 0;
-            if(buildY != 0){
-                y = buildY - height;
-            }else{
+            if (playerY != 0) {
+                y = playerY;
+            } else {
                 y = viewController.getDrawFrame().getHeight() - height;
             }
             touchedGrass = true;
@@ -134,33 +147,35 @@ public class Player extends InteractiveGraphicalObject {
         System.out.println(y + 100);*/
         //System.out.println(WINDOW_HEIGHT);
 
-       if (ViewController.isKeyDown(right)) { // d
+        if (ViewController.isKeyDown(right)) { // d
             x += velocity * dt;
         }
         if (ViewController.isKeyDown(left)) { // a
             x -= velocity * dt;
         }
-        if(touchedGrass){
+        if (touchedGrass) {
             if (ViewController.isKeyDown(jump)) { // Leertaste
-                cooldowntimerboolean = true;
+                if (!collidesWithBuild || y <= buildY - height + 10) {
+                    cooldowntimerboolean = true;
+                }
             }
         }
-        if(cooldowntimerboolean){
+        if (cooldowntimerboolean) {
             y -= velocity * dt;
         }
-        if (ViewController.isKeyDown(shoot) && cooldown < 0){
-            if (scar){
+        if (ViewController.isKeyDown(shoot) && cooldown < 0) {
+            if (scar) {
                 cooldown = maxScarCooldown;
-            }else{
+            } else {
                 cooldown = maxSniperCooldown;
             }
 
             shoot();
         }
-        if(ViewController.isKeyDown(KeyCode.ENTER.getCode())){
-            Floor floor = new Floor(x + 150 - (x % 150),y + 150 - (y % 150));
-            allBuildings.add(floor);
-            viewController.draw(floor);
+        if (ViewController.isKeyDown(KeyCode.ENTER.getCode())) {
+            Build build = new Stair(x + 150 - (x % 150), y + 150 - (y % 150),Stair.RIGHT);
+            allBuildings.add(build);
+            viewController.draw(build);
         }
     }
 
@@ -168,8 +183,8 @@ public class Player extends InteractiveGraphicalObject {
         this.target = target;
     }
 
-    public void shoot(){
-        if (target == null){
+    public void shoot() {
+        if (target == null) {
             return;
         }
 
@@ -182,10 +197,10 @@ public class Player extends InteractiveGraphicalObject {
         double weaponheight = getMyImage().getHeight();
 
         degree = (-Math.atan2(target.getX() - x, target.getY() - y)) * 57.296 + 90;
-        if (degree >= 90 && degree <= 270){
+        if (degree >= 90 && degree <= 270) {
             playerImageScar = "src/main/resources/graphic/weapons/Scarreversed.png";
             playerImageSniper = "src/main/resources/graphic/weapons/Sniper.png";
-        }else{
+        } else {
             playerImageScar = "src/main/resources/graphic/weapons/Scar.png";
             playerImageSniper = "src/main/resources/graphic/weapons/Sniper.png";
         }

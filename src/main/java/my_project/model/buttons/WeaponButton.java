@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import static my_project.control.ProgramController.*;
 
 public class WeaponButton extends Buttons{
+
+    public static boolean isPlayer1 = true;
     private String[] pathToImage = new String[2];
     public WeaponButton(ProgramController p){
         super(p);

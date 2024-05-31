@@ -19,8 +19,8 @@ public class ProgramController {
     public MapButton mapButton;
     public WeaponButton weaponButton;
 
-    public static boolean selectScar = false;
-    public static boolean selectSniper = false;
+   // public static boolean selectScar = false;
+    //public static boolean selectSniper = false;
 
 
 
@@ -39,10 +39,10 @@ public class ProgramController {
 
     public void updateProgram(double dt){
         if(ViewController.isKeyDown(77)){ // M
-           selectScar = true;
+            player.selectScar = true;
         }
         if(ViewController.isKeyDown(78)){ // N
-            selectSniper = true;
+           player1.selectSniper = true;
         }
 
         if(ViewController.isKeyDown(74)){ // J
@@ -51,7 +51,7 @@ public class ProgramController {
         if(ViewController.isKeyDown(75)){ // K
             viewController.showScene(1);
         }
-        if(ViewController.isKeyDown(76)){ // K
+        if(ViewController.isKeyDown(76)){ // L
             viewController.showScene(2);
         }
         if(ViewController.isKeyDown(27)){
@@ -73,23 +73,23 @@ public class ProgramController {
             Shot shot = Variable_Container.shots.get(i);
             if ((CollisionDetector.circleWithRectangle(shot.getX(), shot.getY(), shot.getRadius(), player.getX(), player.getY(), player.getWidth(), player.getHeight()) && shot.shooter != player) || (CollisionDetector.circleWithRectangle(shot.getX(), shot.getY(), shot.getRadius(), player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight()) && shot.shooter != player1)){
                 if (shot.target == player){
-                    if (selectScar){
+                    if (player1.selectScar){
                         player1.health -= 2;
 
                         player1.healthbarwidth -= 2;
-                    }else{
+                    } else {
                         player1.health -= 15;
 
                         player1.healthbarwidth -= 15;
                     }
                 }
                 if (shot.target == player1){
-                    if (selectScar){
+                    if (player.selectScar){
                         player.health -= 2;
 
                         player.healthbarwidth -= 2;
                         player.healthbarx += 2;
-                    }else{
+                    } else {
                         player.health -= 15;
 
                         player.healthbarwidth -= 15;
@@ -102,6 +102,10 @@ public class ProgramController {
 
             }
 
+        }
+
+        if (player.health <= 0 || player1.health <= 0){
+            viewController.showScene(2);
         }
     }
 
@@ -141,9 +145,6 @@ public class ProgramController {
     public void startGame(){
         allBuildings = new ArrayList<>();
 
-        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings);
-        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings);
-
         player.setTarget(player1);
         player1.setTarget(player);
 
@@ -155,3 +156,28 @@ public class ProgramController {
     }
 
 }
+
+/*if (shot.target == player){
+        if (player1.selectScar && player1.selectSniper == false){
+        player1.health -= 2;
+
+        player1.healthbarwidth -= 2;
+        } else if (player1.selectSniper && player1.selectScar == false) {
+        player1.health -= 15;
+
+        player1.healthbarwidth -= 15;
+        }
+        }
+        if (shot.target == player1){
+        if (player.selectScar && player.selectSniper== false){
+        player.health -= 2;
+
+        player.healthbarwidth -= 2;
+        player.healthbarx += 2;
+        } else if (player.selectSniper && player.selectScar == false) {
+        player.health -= 15;
+
+        player.healthbarwidth -= 15;
+        player.healthbarx += 15;
+        }
+        }*/

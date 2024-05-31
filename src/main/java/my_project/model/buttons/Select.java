@@ -14,8 +14,8 @@ import static my_project.control.ProgramController.viewController;
 
 public class Select extends Buttons {
     private int scene;
-    private int scale = 5;
-    public Select(ProgramController p, int scene, String imagePath, double x, double y){
+    private double scale;
+    public Select(ProgramController p, int scene, String imagePath, double x, double y,double scale){
         super(p);
         this.scene = scene;
         this.x = x;
@@ -67,7 +67,7 @@ public class Select extends Buttons {
         drawTool.setCurrentColor(Color.RED);
         double tempX = 0;
         double tempY = 0;
-        for(int i = 1; i <= scale; i++){
+        for(int i = 1; i < scale; i++){
             tempX = tempX + i*image.getWidth()*0.5;
             tempY = tempY + i*image.getHeight()*0.5;
         }

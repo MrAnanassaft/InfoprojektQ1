@@ -21,6 +21,13 @@ public class Player extends InteractiveGraphicalObject {
 
     private String playerImageScar = "src/main/resources/graphic/weapons/Scar.png";
     private String playerImageSniper = "src/main/resources/graphic/weapons/Sniper.png";
+
+    private String playerImageBlackbear = "src/main/resources/graphic/skins/Skin Blackbear.png";
+    private String playerImageHotdog = "src/main/resources/graphic/skins/Skin Hotdog.png";
+    private String playerImageMan = "src/main/resources/graphic/skins/Skin Man.png";
+    private String playerImageManStreched = "src/main/resources/graphic/skins/Skin ManStretched.png";
+
+
     private int velocity = 500;
     private double gravityConstant = 981;
     private double verticalVeloctiy = 0;
@@ -38,7 +45,13 @@ public class Player extends InteractiveGraphicalObject {
     public int healthbarwidth;
     public int healthbarx;
     public int health;
-
+    public boolean playerWeapon = false;
+    public boolean selectSniper;
+    public boolean selectScar;
+    public boolean selectBlackbear;
+    public boolean selectHotdog;
+    public boolean selectMan;
+    public boolean selectManStretched;
     public static boolean sniper = false;
     public static boolean scar = false;
     private double maxSniperCooldown = 1;
@@ -51,7 +64,7 @@ public class Player extends InteractiveGraphicalObject {
     public ViewController viewController;
     public ProgramController programController;
 
-    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, int health, ViewController viewController, int right, int left, int jump, int shoot, ArrayList<Build> allBuildings) {
+    public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, int health, ViewController viewController, int right, int left, int jump, int shoot, ArrayList<Build> allBuildings, boolean selectScar, boolean selectSniper, boolean selectBlackbear, boolean selectHotdog, boolean selectMan, boolean selectManStretched) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -65,6 +78,13 @@ public class Player extends InteractiveGraphicalObject {
         this.shoot = shoot;
         this.viewController = viewController;
         this.allBuildings = allBuildings;
+        this.selectScar = selectScar;
+        this.selectSniper = selectSniper;
+        this.selectBlackbear = selectBlackbear;
+        this.selectHotdog = selectHotdog;
+        this.selectMan = selectMan;
+        this.selectManStretched = selectManStretched;
+        //this.playerWeapon = playerWeapon;
     }
 
     public void draw(DrawTool drawTool) {
@@ -75,16 +95,30 @@ public class Player extends InteractiveGraphicalObject {
         drawTool.setCurrentColor(new Color(185, 0, 0));
         drawTool.drawFilledRectangle(healthbarx, 10, healthbarwidth, 30);
 
-        if (programController.selectScar) {
-            setNewImage(playerImageScar);
-            drawTool.drawTransformedImage(getMyImage(), x + width / 2, y + height / 2, degree, 3);
+        if (selectBlackbear){
+            setNewImage(playerImageBlackbear);
+            drawTool.drawTransformedImage(getMyImage(), x, y + 15, 0, 1);
+        } else if (selectHotdog) {
+            setNewImage(playerImageHotdog);
+            drawTool.drawTransformedImage(getMyImage(), x, y + 15, 0, 1);
+        } else if (selectMan) {
+            setNewImage(playerImageMan);
+            drawTool.drawTransformedImage(getMyImage(), x, y + 15, 0, 1);
+        } else if (selectManStretched) {
+            setNewImage(playerImageManStreched);
+            drawTool.drawTransformedImage(getMyImage(), x, y + 15, 0, 1);
+        }
+
+        if (selectScar) {
+            setWeaponImage(playerImageScar);
+            drawTool.drawTransformedImage(weapon, x + this.width / 2, y + this.height / 2, degree, 3);
             scar = true;
         } else {
             scar = false;
         }
-        if (programController.selectSniper) {
-            setNewImage(playerImageSniper);
-            drawTool.drawTransformedImage(getMyImage(), x + width / 2, y + height / 2, degree, 3);
+        if (selectSniper) {
+            setWeaponImage(playerImageSniper);
+            drawTool.drawTransformedImage(weapon, x + width / 2, y + height / 2, degree, 3);
             sniper = true;
         } else {
             sniper = false;

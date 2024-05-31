@@ -17,9 +17,9 @@ public class Shot extends GraphicalObject {
     public Player target;
     private double velocity = 2500;
     private ViewController viewController;
+    public double degree = 0;
 
-
-
+    private String bulletImage = "src/main/resources/graphic/weapons/Bullet.png";
 
     public Shot(double x, double y, double dirX, double dirY, double radius, Player shooter, Player target, ViewController viewController) {
         this.x = x;
@@ -33,8 +33,9 @@ public class Shot extends GraphicalObject {
     }
 
     public void draw(DrawTool drawTool) {
-        drawTool.setCurrentColor(new Color(255, 255, 255));
-        drawTool.drawFilledCircle(x, y, radius);
+
+        setNewImage(bulletImage);
+        drawTool.drawTransformedImage(getMyImage(), x - getMyImage().getWidth() / 2, y - getMyImage().getHeight() / 2, shooter.degree, 1);
     }
 
     public void update(double dt) {
@@ -45,8 +46,6 @@ public class Shot extends GraphicalObject {
         double distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
         if (distance < distance / 2) {
-            //dirX = distanceX / distance;
-            //dirY = distanceY / distance;
 
             dirX = Math.cos(distanceX / distance);
             dirY = Math.sin(distanceY / distance);
@@ -55,12 +54,9 @@ public class Shot extends GraphicalObject {
         x += dirX * velocity * dt;
         y += dirY * velocity * dt;
 
-        //for (int i = 0; i <= Variable_Container.shots.size() - 1; i++){
-        //Shot ball = Variable_Container.shots.get(i);
         if (x > viewController.getDrawFrame().getWidth() + radius || x < -radius || y > viewController.getDrawFrame().getHeight() + radius || y < -radius) {
             viewController.removeDrawable(this);
             Variable_Container.shots.remove(this);
         }
-        //}
     }
 }

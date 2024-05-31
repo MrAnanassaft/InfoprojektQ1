@@ -6,6 +6,8 @@ import KAGO_framework.view.DrawTool;
 import my_project.control.ProgramController;
 import KAGO_framework.view.DrawFrame;
 import KAGO_framework.view.DrawingPanel;
+import my_project.model.Variable_Container;
+import my_project.model.buttons.Select;
 
 import javax.swing.*;
 import java.awt.*;
@@ -388,6 +390,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
         //highlightStartButton(e);
         //highlightRestartButton(e);
         highlightButtons(e);
+        highlightSelects(e);
     }
 
     @Override
@@ -441,14 +444,27 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
         }
     }*/
     public void highlightButtons(MouseEvent e){
-        if(programController.buttons != null){
-            for(int i = 0; i < programController.buttons.length; i++){
-                KAGO_framework.view.simple_gui.Button[] buttons = programController.buttons;
+        if(Variable_Container.buttons != null){
+            for(int i = 0; i < Variable_Container.buttons.length; i++){
+                KAGO_framework.view.simple_gui.Button[] buttons = Variable_Container.buttons;
                 if(buttons[i] != null){
                     if(buttons[i].mouseHovered(e)){
                         buttons[i].isTouched();
                     }else{
                         buttons[i].isNotTouched();
+                    }
+                }
+            }
+        }
+    }
+    public void highlightSelects(MouseEvent e){
+        if(Variable_Container.selects != null){
+            for (KAGO_framework.view.simple_gui.Button selects: Variable_Container.selects) {
+                if(selects != null){
+                    if(selects.mouseHovered(e)){
+                        selects.isTouched();
+                    }else{
+                        selects.isNotTouched();
                     }
                 }
             }

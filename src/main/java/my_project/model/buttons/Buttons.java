@@ -6,11 +6,14 @@ import KAGO_framework.view.DrawTool;
 import KAGO_framework.view.simple_gui.Button;
 import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.control.ProgramController;
+import my_project.model.Variable_Container;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+import static my_project.control.ProgramController.viewController;
 
 public abstract class Buttons extends GraphicalObject {
     protected ProgramController p;
@@ -33,5 +36,14 @@ public abstract class Buttons extends GraphicalObject {
     }
     public void notPressed(){
         wasPressed = false;
+    }
+    public void create(int amount, int scene, double x, double y, double diff, String[] string,double width, double height){
+        for(int i = 0; i < amount; i++){
+            if(string[i] != null) {
+                Select select = new Select(p, scene, string[i], x + i*diff, y,width,height);
+                Variable_Container.selects.add(select.button);
+                viewController.draw(select, scene);
+            }
+        }
     }
 }

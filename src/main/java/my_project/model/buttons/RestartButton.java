@@ -5,6 +5,7 @@ import KAGO_framework.view.DrawTool;
 import KAGO_framework.view.simple_gui.Button;
 import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.control.ProgramController;
+import my_project.model.Variable_Container;
 
 import static my_project.control.ProgramController.viewController;
 
@@ -45,7 +46,7 @@ public class RestartButton extends Buttons {
         p.startButton.restart();
         p.viewController.removeAllDrawables();
         //p.enemies = new ArrayList<>();
-        p.buttons = new Button[10];
+        Variable_Container.buttons = new Button[10];
         p.startGame();
         p.setScenesForStart();
         p.viewController.showScene(0);

@@ -21,7 +21,7 @@ public class ProgramController {
     public static boolean selectScar = false;
     public static boolean selectSniper = false;
 
-    public Button[] buttons = new Button[10];
+
 
     private ArrayList<Build> allBuildings = new ArrayList<>();
 
@@ -119,19 +119,19 @@ public class ProgramController {
             viewController.draw(background,i);
         }
         startButton = new StartButton(this);
-        buttons[0] = startButton.button;
+        Variable_Container.buttons[0] = startButton.button;
         viewController.draw(startButton,0);
         restartButton = new RestartButton(this);
-        buttons[1] = restartButton.button;
+        Variable_Container.buttons[1] = restartButton.button;
         viewController.draw(restartButton,2);
         skinButton = new SkinButton(this);
-        buttons[2] = skinButton.button;
+        Variable_Container.buttons[2] = skinButton.button;
         viewController.draw(skinButton,0);
         mapButton = new MapButton(this);
-        buttons[3] = mapButton.button;
+        Variable_Container.buttons[3] = mapButton.button;
         viewController.draw(mapButton,0);
         weaponButton = new WeaponButton(this);
-        buttons[4] = weaponButton.button;
+        Variable_Container.buttons[4] = weaponButton.button;
         viewController.draw(weaponButton,0);
     }
     public void startGame(){

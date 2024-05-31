@@ -16,6 +16,7 @@ public class Label extends GraphicalObject {
     private boolean hasBorder;
     private int style;
     private String font;
+    private boolean drawImage = true;
     private int r,g,b;
 
     /**
@@ -75,7 +76,7 @@ public class Label extends GraphicalObject {
     public void draw(DrawTool drawTool) {
         drawTool.setCurrentColor(r, g, b, 255);
         if(getMyImage() != null){
-            drawTool.drawImage(getMyImage(),x,y);
+            if(drawImage) drawTool.drawImage(getMyImage(),x,y);
         }else {
             drawTool.formatText(font, style, textsize);
             drawTool.drawText(x + 5, y + height * 0.8, text);
@@ -109,5 +110,13 @@ public class Label extends GraphicalObject {
         this.r = r;
         this.g = g;
         this.b = b;
+    }
+
+    public boolean drawingImage() {
+        return drawImage;
+    }
+
+    public void setDrawImage(boolean drawImage) {
+        this.drawImage = drawImage;
     }
 }

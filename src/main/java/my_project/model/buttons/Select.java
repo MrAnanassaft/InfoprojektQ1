@@ -96,26 +96,25 @@ public class Select extends Buttons {
         Scale 1.0: Map 1: x = 200, y = 400;  Map 2: x = 500, y = 400;   Map 3: x = 800, y = 400;
         Scale 0.9: Map 1: x = 372.8, y = 497.2; Map 2: x = 672.8, y = 497.2; Map 3: x = 972.8, y = 497.2
         Scale 0.8: Map 1: x = 507.2, y = 572.8; Map 2: x = 807.2, y = 572.8; Map 3: x = 1107.2, y = 572.8
-        Scale 0.7: Map 1: x = 603.2, y = 626.8; Map 2: x = 903.2, y = 626.8; Map 3: x = 1203.2, y = 626.8
-        Scale 0.6: Map 1: x = 660.8, y = 659.2; Map 2: x = 960.8, y = 659.2; Map 3: x = 1260.8, y = 659.2;
-        Scale 0.5: Map 1: x = 680, y = 670;  Map 2: x = 980, y = 670;  Map 3: x = 1280, y = 670
-        Scale 0.4: Map 1: x = 660.8, y = 659.2; Map 2: x = 960.8, y = 659.2; Map 3: x = 1260.8, y = 659.2;
-        Scale 0.3: Map 1: x = 603.2, y = 626.8; Map 2: x = 903.2, y = 626.8; Map 3: x = 1203.2, y = 626.8;
-        Scale 0.2: Map 1: x = 507.2, y = 572.8; Map 2: x = 807.2, y = 572.8; Map 3: x = 1107.2, y = 572.8;
-        Scale 0.1: Map 1: x = 372.8, y = 497.2; Map 2: x = 672.8, y = 497.2; Map 3: x = 972.8, y = 497.2;
-        Scale 0.0: Map 2: x = 200.0, y = 400.0; Map 2: x = 500.0, y = 400.0; Map 3: x = 800.0, y = 400.0;
-        M1: 1 - 0.9: difx = +172.8      dify = + 97.2
-            0.9 - 0.8: difx = +134.4    dify = 75.6
-            0.8 - 0.7: difx = +96       dify = 54
-            0.7 - 0.6: difx = +57.6
-            0.6 - 0.5: difx = +19.2
-            0.5 - 0.4: difx = -19.2
-            1 - 0.5: difx = 480
-        Width = 1980
-        Height = 1080
-                difdifx = 38.4;
-         */
-
+       Scale 0.7: Map 1: x = 603.2, y = 626.8; Map 2: x = 903.2, y = 626.8; Map 3: x = 1203.2, y = 626.8
+       Scale 0.6: Map 1: x = 660.8, y = 659.2; Map 2: x = 960.8, y = 659.2; Map 3: x = 1260.8, y = 659.2;
+       Scale 0.5: Map 1: x = 680, y = 670;  Map 2: x = 980, y = 670;  Map 3: x = 1280, y = 670
+       Scale 0.4: Map 1: x = 660.8, y = 659.2; Map 2: x = 960.8, y = 659.2; Map 3: x = 1260.8, y = 659.2;
+       Scale 0.3: Map 1: x = 603.2, y = 626.8; Map 2: x = 903.2, y = 626.8; Map 3: x = 1203.2, y = 626.8;
+       Scale 0.2: Map 1: x = 507.2, y = 572.8; Map 2: x = 807.2, y = 572.8; Map 3: x = 1107.2, y = 572.8;
+       Scale 0.1: Map 1: x = 372.8, y = 497.2; Map 2: x = 672.8, y = 497.2; Map 3: x = 972.8, y = 497.2;
+       Scale 0.0: Map 2: x = 200.0, y = 400.0; Map 2: x = 500.0, y = 400.0; Map 3: x = 800.0, y = 400.0;
+       M1: 1 - 0.9: difx = +172.8      dify = + 97.2
+           0.9 - 0.8: difx = +134.4    dify = 75.6
+           0.8 - 0.7: difx = +96       dify = 54
+           0.7 - 0.6: difx = +57.6
+           0.6 - 0.5: difx = +19.2
+           0.5 - 0.4: difx = -19.2
+           1 - 0.5: difx = 480
+       Width = 1980
+       Height = 1080
+               difdifx = 38.4;
+                    */
 
     }
     public void gotClicked(DrawTool drawTool){

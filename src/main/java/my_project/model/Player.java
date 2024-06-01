@@ -64,6 +64,9 @@ public class Player extends InteractiveGraphicalObject {
     public ViewController viewController;
     public ProgramController programController;
 
+    private int direction;
+    private int buildCooldown;
+
     public Player(double x, double y, double width, double height, int healthbarwidth, int healthbarx, int health, ViewController viewController, int right, int left, int jump, int shoot, ArrayList<Build> allBuildings, boolean selectScar, boolean selectSniper, boolean selectBlackbear, boolean selectHotdog, boolean selectMan, boolean selectManStretched) {
         this.x = x;
         this.y = y;
@@ -131,7 +134,7 @@ public class Player extends InteractiveGraphicalObject {
         double playerY = 0;
         double buildY = 0;
         for (Build build : allBuildings) {
-            if (build.colidesWithPlayer(this)) {
+            if (build.collidesWithPlayer(this)) {
                 collidesWithBuild = true;
                 buildY = build.getY();
                 if (build instanceof Floor) {
@@ -166,9 +169,11 @@ public class Player extends InteractiveGraphicalObject {
 
         if (ViewController.isKeyDown(right)) { // d
             x += velocity * dt;
+            direction = 1;
         }
         if (ViewController.isKeyDown(left)) { // a
             x -= velocity * dt;
+            direction = -1;
         }
         if (touchedGrass) {
             if (ViewController.isKeyDown(jump)) { // Leertaste
@@ -189,8 +194,15 @@ public class Player extends InteractiveGraphicalObject {
 
             shoot();
         }
-        if (ViewController.isKeyDown(KeyCode.ENTER.getCode())) {
-            Build build = new Stair(x + 150 - (x % 150), y + 150 - (y % 150),Stair.RIGHT);
+        buildCooldown -= dt;
+        if (ViewController.isKeyDown(KeyCode.ENTER.getCode()) && buildCooldown <= 0) {
+            Build build;
+            if(direction == 1){
+                build = new Stair(x + 150 - (x % 150), y + 150 - (y % 150),direction);
+            }else{
+                build = new Stair(x - (x % 150), y + 150 - (y % 150),direction);
+            }
+            buildCooldown = 5;
             allBuildings.add(build);
             viewController.draw(build);
         }

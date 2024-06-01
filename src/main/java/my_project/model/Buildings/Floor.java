@@ -11,7 +11,7 @@ public class Floor extends Build{
     }
 
     @Override
-    public boolean colidesWithPlayer(Player player) {
+    public boolean collidesWithPlayer(Player player) {
         return player.collidesWith(this);
     }
 

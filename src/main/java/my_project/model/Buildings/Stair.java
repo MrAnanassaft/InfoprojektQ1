@@ -5,7 +5,7 @@ import my_project.model.CollisionDetector;
 import my_project.model.Player;
 
 public class Stair extends Build {
-    private int direction = 0;
+    private int direction;
     public static int LEFT = -1,RIGHT = 1;
     public Stair(double x, double y,int direction) {
         super(x, y);
@@ -22,7 +22,7 @@ public class Stair extends Build {
     }
 
     @Override
-    public boolean colidesWithPlayer(Player player) {
+    public boolean collidesWithPlayer(Player player) {
         return CollisionDetector.lineRect(x,y,x + 150 * direction,y-150,player.getX(),player.getY(),player.getWidth(),player.getHeight());
     }
 

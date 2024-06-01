@@ -9,6 +9,7 @@ import my_project.model.Variable_Container;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static my_project.control.ProgramController.*;
 
@@ -48,16 +49,20 @@ public class WeaponButton extends Buttons{
         viewController.draw(button,0);
     }
     public static void useButtons(String image){
-        if(image == "src/main/resources/graphic/weapons/Scar.png"){
+        if(Objects.equals(image,"src/main/resources/graphic/buttons/Player 1.png")){
+            isPlayer1 = true;
+        }else if (Objects.equals(image, "src/main/resources/graphic/buttons/Player 2.png")) {
+            isPlayer1 = false;
+        }else if(Objects.equals(image, "src/main/resources/graphic/weapons/Scar.png")){
             if(isPlayer1){
                 player.selectScar = true;
-            } else if (!isPlayer1) {
+            } else {
                 player1.selectScar = true;
             }
-        }else if(image == "src/main/resources/graphic/weapons/Sniper.png"){
+        }else if(Objects.equals(image, "src/main/resources/graphic/weapons/Sniper.png")){
             if(isPlayer1){
                 player.selectSniper = true;
-            } else if (!isPlayer1) {
+            } else {
                 player1.selectSniper = true;
             }
         }

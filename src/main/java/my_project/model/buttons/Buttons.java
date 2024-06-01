@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static my_project.control.ProgramController.viewController;
 
@@ -19,9 +20,12 @@ public abstract class Buttons extends GraphicalObject {
     protected ProgramController p;
     public Button button;
     protected BufferedImage image;
+    public String[] players = new String[2];
     protected boolean wasPressed = false;
     public Buttons(ProgramController p){
         this.p = p;
+        players[0] = "src/main/resources/graphic/buttons/Player 1.png";
+        players[1] = "src/main/resources/graphic/buttons/Player 2.png";
     }
 
     public void draw(DrawTool drawTool){
@@ -45,6 +49,14 @@ public abstract class Buttons extends GraphicalObject {
                 Variable_Container.selects.add(select.button);
                 viewController.draw(select, scene);
             }
+        }
+    }
+    public static BufferedImage createNewImage(String pathToImage){
+        try {
+            BufferedImage newImage = ImageIO.read(new File(pathToImage));
+            return newImage;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -23,7 +23,7 @@ public class MapButton extends Buttons{
                 if(!wasPressed){
                     wasPressed = true;
                     getViewController().showScene(5);
-                    create(3,5,200,400,0.3*1920,pathToImage,0.3);
+                    create(3,5,288,600,0.25*1920,pathToImage,0.2);
                 }
             }
 

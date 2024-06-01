@@ -29,6 +29,7 @@ public class WeaponButton extends Buttons{
                     wasPressed = true;
                     viewController.showScene(4);
                     create(2,4,300,400,400,pathToImage,5);
+                    create(2,4,100,200,1400,players,1);
                 }
             }
 
@@ -47,6 +48,16 @@ public class WeaponButton extends Buttons{
         button.setWidth(image.getWidth());
         button.setFont("Monospaced");
         viewController.draw(button,0);
+    }
+
+    public void draw(DrawTool drawTool){
+        if(viewController.getSceneIndex() == 4){
+            if(isPlayer1){
+                drawTool.drawText(700,200,"PLAYER 1 CHOOSES");
+            }else{
+                drawTool.drawText(700,200,"PLAYER 2 CHOOSES");
+            }
+        }
     }
     public static void useButtons(String image){
         if(Objects.equals(image,"src/main/resources/graphic/buttons/Player 1.png")){

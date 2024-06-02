@@ -89,7 +89,7 @@ public class Select extends Buttons {
                 drawTool.drawText(700, 200, "PLAYER 2 CHOOSES");
             }
         }
-    }
+    } // Imagine ich habe eif was krasses gefixed
 
     public void tellWoChooses(DrawTool drawTool) {
         drawTool.setCurrentColor(new Color(12, 12, 68, 37));

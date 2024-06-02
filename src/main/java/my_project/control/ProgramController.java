@@ -101,7 +101,37 @@ public class ProgramController {
                 i--;
 
             }
+            if (i >= 0){
+                for (Build build1: player.getAllBuildings()) {
+                    if (CollisionDetector.circleWithRectangle(shot.getX(), shot.getY(), shot.getRadius(), build1.getX(), build1.getY(), build1.getWidth() * 7, build1.getHeight())){
+                        build1.setBuildhealth();
+                        if (build1.buildhealth <= 0){
+                            player.destroyBuild(build1);
+                        }
 
+                        viewController.removeDrawable(Variable_Container.shots.get(i));
+                        Variable_Container.shots.remove(i);
+                        i--;
+                        break;
+                    }
+                }
+            }
+            if (i >= 0) {
+                for (Build build2 : player1.getAllBuildings()) {
+                    if (CollisionDetector.circleWithRectangle(shot.getX(), shot.getY(), shot.getRadius(), build2.getX(), build2.getY(), build2.getWidth() * 7, build2.getHeight())) {
+                        build2.setBuildhealth();
+
+                        if (build2.buildhealth <= 0) {
+                            player.destroyBuild(build2);
+                        }
+
+                        viewController.removeDrawable(Variable_Container.shots.get(i));
+                        Variable_Container.shots.remove(i);
+                        i--;
+                        break;
+                    }
+                }
+            }
         }
 
         if (player.health <= 0 || player1.health <= 0){
@@ -158,8 +188,8 @@ public class ProgramController {
         viewController.showScene(1);
     }
     public void createNewPlayers(){
-        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, true, false, true, false, false, false);
-        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings, true, false, false, true, false, false);
+        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, true, false, true, false, false, false, 81, 82, 70);
+        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings, true, false, false, true, false, false, 16, 97, 98);
     }
 }
 

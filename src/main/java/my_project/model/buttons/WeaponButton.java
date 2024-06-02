@@ -33,8 +33,8 @@ public class WeaponButton extends Buttons{
                 if(!wasPressed) {
                     wasPressed = true;
                     viewController.showScene(4);
-                    create(2,4,300,400,400,pathToImage,5);
-                    create(2,4,100,200,1400,players,1);
+                    create(2,4,630,820,400,pathToImage,5);
+                    create(2,4,100,300,1400,players,1);
                 }
             }
 

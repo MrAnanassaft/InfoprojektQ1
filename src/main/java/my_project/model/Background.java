@@ -70,7 +70,7 @@ public class Background extends GraphicalObject {
         drawTool.setCurrentColor(Color.GRAY);
         drawTool.setCurrentColor(Color.WHITE);
         drawTool.formatText("Monospaced",3,100);  // Bereits gecentert, bei veränderungen bitte wieder centern
-        drawTool.drawText(292,100,"PICK YOUR SKIN "); //
+        drawTool.drawText(viewController.getDrawFrame().getWidth() / 3.5,100,"PICK YOUR SKIN "); //
     }
     public void drawS4(DrawTool drawTool){
          drawTool.setCurrentColor(new Color(7, 119, 147));
@@ -78,7 +78,7 @@ public class Background extends GraphicalObject {
          drawTool.setCurrentColor(Color.GRAY);
          drawTool.setCurrentColor(Color.WHITE);
          drawTool.formatText("Monospaced",3,100);  // Bereits gecentert, bei veränderungen bitte wieder centern
-         drawTool.drawText(292,100,"PICK YOUR WEAPONS"); //
+         drawTool.drawText(viewController.getDrawFrame().getWidth() / 4.12,100,"PICK YOUR WEAPONS"); //
     }
     public void drawS5(DrawTool drawTool){
         drawTool.setCurrentColor(new Color(7, 119, 147));
@@ -86,7 +86,7 @@ public class Background extends GraphicalObject {
         drawTool.setCurrentColor(Color.GRAY);
         drawTool.setCurrentColor(Color.WHITE);
         drawTool.formatText("Monospaced",3,100);  // Bereits gecentert, bei veränderungen bitte wieder centern
-        drawTool.drawText(292,100,"PICK THE MAP"); //
+        drawTool.drawText(viewController.getDrawFrame().getWidth() / 3.1,100,"PICK THE MAP"); //
     }
     public void drawCave(DrawTool drawTool){
         setNewImage("src/main/resources/graphic/backgrounds/Background Cave.png");

@@ -36,7 +36,7 @@ public class SkinButton extends Buttons{
                 if(!wasPressed){
                     wasPressed = true;
                     getViewController().showScene(3);
-                    create(4,3,200,790,420,pathToImage,1);
+                    create(4,3,260,790,420,pathToImage,1);
                     create(2,3,100,300,1400,players,1);
                 }
             }
@@ -65,6 +65,7 @@ public class SkinButton extends Buttons{
         //drawTool.drawRectangle(x + 380, y + 180, 100, 300);
 
     }
+
     public static void useButtons(String image){
         if(Objects.equals(image,"src/main/resources/graphic/buttons/Player 1.png")){
             isPlayer1 = true;

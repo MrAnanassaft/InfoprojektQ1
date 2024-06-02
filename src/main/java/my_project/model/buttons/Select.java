@@ -75,13 +75,13 @@ public class Select extends Buttons {
                 drawTool.drawText(viewController.getDrawFrame().getWidth() / 4, 200, "PLAYER 2 CHOOSES");
             }
             if((player.selectBlackbear && SkinButton.isPlayer1) || (player1.selectBlackbear && !SkinButton.isPlayer1)){
-                g2d.drawImage(SkinButton.blackbear,   510,300,(2 * SkinButton.blackbear.getWidth()),(2 * SkinButton.blackbear.getHeight()),null);
+                g2d.drawImage(SkinButton.blackbear,   820,300,(2 * SkinButton.blackbear.getWidth()),(2 * SkinButton.blackbear.getHeight()),null);
             }else if((player.selectHotdog  && SkinButton.isPlayer1)|| (player1.selectHotdog && !SkinButton.isPlayer1)){
-                g2d.drawImage(SkinButton.hotdog,  510,300,(2 * SkinButton.hotdog.getWidth()),(2 * SkinButton.hotdog.getHeight()),null);
+                g2d.drawImage(SkinButton.hotdog,  820,300,(2 * SkinButton.hotdog.getWidth()),(2 * SkinButton.hotdog.getHeight()),null);
             }else if((player.selectMan && SkinButton.isPlayer1) || (player1.selectMan && !SkinButton.isPlayer1)){
-                g2d.drawImage(SkinButton.man,  510,300,(2 * SkinButton.man.getWidth()), (2 * SkinButton.man.getHeight()),null);
+                g2d.drawImage(SkinButton.man,  820,300,(2 * SkinButton.man.getWidth()), (2 * SkinButton.man.getHeight()),null);
             }else if((player.selectManStretched && SkinButton.isPlayer1)|| (player1.selectManStretched && !SkinButton.isPlayer1)) {
-                g2d.drawImage(SkinButton.manStretched,  510,300,(2 * SkinButton.manStretched.getWidth()), (2 * SkinButton.manStretched.getHeight()),null);
+                g2d.drawImage(SkinButton.manStretched,  820,300,(2 * SkinButton.manStretched.getWidth()), (2 * SkinButton.manStretched.getHeight()),null);
             }
         } else if (viewController.getSceneIndex() == 4) {
             if (WeaponButton.isPlayer1) {
@@ -90,9 +90,9 @@ public class Select extends Buttons {
                 drawTool.drawText(viewController.getDrawFrame().getWidth() / 4, 200, "PLAYER 2 CHOOSES");
             }
             if((player.selectScar && WeaponButton.isPlayer1) || (player1.selectScar && !WeaponButton.isPlayer1)){
-                g2d.drawImage(WeaponButton.scar,  510,300,(5*WeaponButton.scar.getWidth()),(5*WeaponButton.scar.getHeight()),null);
+                g2d.drawImage(WeaponButton.scar,  820,300,(5*WeaponButton.scar.getWidth()),(5*WeaponButton.scar.getHeight()),null);
             }else if((player.selectSniper && WeaponButton.isPlayer1) || (player1.selectSniper && !WeaponButton.isPlayer1)){
-                g2d.drawImage(WeaponButton.sniper,  510,300,(5*WeaponButton.sniper.getWidth()),(5*WeaponButton.sniper.getHeight()),null);
+                g2d.drawImage(WeaponButton.sniper,  820,300,(5*WeaponButton.sniper.getWidth()),(5*WeaponButton.sniper.getHeight()),null);
             }
         } else if (viewController.getSceneIndex() == 5 ) {
             drawTool.drawText(viewController.getDrawFrame().getWidth() / 3,200,"CURRENT MAP");

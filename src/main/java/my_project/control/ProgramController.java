@@ -189,8 +189,8 @@ public class ProgramController {
         viewController.showScene(1);
     }
     public void createNewPlayers(){
-        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, true, false, true, false, false, false, 81, 82, 70);
-        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings, true, false, false, true, false, false, 16, 97, 98);
+        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, true, false, true, false, false, false, 81);
+        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings, true, false, false, true, false, false, 16);
     }
 }
 

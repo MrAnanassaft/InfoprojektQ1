@@ -64,7 +64,7 @@ public class Background extends GraphicalObject {
         drawTool.setCurrentColor(Color.GRAY);
         drawTool.setCurrentColor(Color.WHITE);
         drawTool.formatText("Monospaced",3,100);  // Bereits gecentert, bei veränderungen bitte wieder centern
-        drawTool.drawText(292,100,"NICE GAME!"); //
+        drawTool.drawText(662,100,"NICE GAME!"); //
     }
     public void drawS3(DrawTool drawTool){
         drawTool.setCurrentColor(new Color(7, 119, 147));

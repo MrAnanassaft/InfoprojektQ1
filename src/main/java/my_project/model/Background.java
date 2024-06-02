@@ -27,6 +27,8 @@ public class Background extends GraphicalObject {
             drawS4(drawTool);
         }else if(scene == 5){
             drawS5(drawTool);
+        }else if(scene == 6){
+            drawS6(drawTool);
         }
     }
 
@@ -87,6 +89,27 @@ public class Background extends GraphicalObject {
         drawTool.setCurrentColor(Color.WHITE);
         drawTool.formatText("Monospaced",3,100);  // Bereits gecentert, bei veränderungen bitte wieder centern
         drawTool.drawText(viewController.getDrawFrame().getWidth() / 3.1,100,"PICK THE MAP"); //
+    }
+    public void drawS6(DrawTool drawTool){
+        drawTool.setCurrentColor(new Color(7, 119, 147));
+        drawTool.drawFilledRectangle(0,0,viewController.getDrawFrame().getWidth(),viewController.getDrawFrame().getHeight());
+        drawTool.setCurrentColor(Color.GRAY);
+        drawTool.setCurrentColor(Color.WHITE);
+        drawTool.formatText("Monospaced",3,100);  // Bereits gecentert, bei veränderungen bitte wieder centern
+        drawTool.drawText(viewController.getDrawFrame().getWidth() / 3,100,"DIRECTIONS"); //
+        drawTool.formatText("Monospaced",3,20);
+        drawTool.drawText(500,250,"Player 1 moves with a : Right, d : Left, Space : Jump");
+        drawTool.drawText(500,310,"He shoots with e and builds with r");
+        drawTool.drawText(500,370,"Player 2 moves with right : Right, left : Left, Num0 : Jump");
+        drawTool.drawText(500,430,"He shoots with strg and builds with Num1");
+        drawTool.drawText(500,490,"Before playing, you can choose the map, skin and your weapon");
+        drawTool.drawText(500,550,"For selecting the Skin, press Skinbutton etc,");
+        drawTool.drawText(500,610,"For leaving the Page, press Esc");
+        drawTool.drawText(500,670,"If Player 1 wants to choose, press the Button Player 1, if");
+        drawTool.drawText(500,730,"Player 2 wants to choose, press the Button Player 2, the current");
+        drawTool.drawText(500,790,"Skin / Weapon / Map is shown");
+        drawTool.drawText(500,850,"We wish you a happy fight, please do not cheat, harm people and other illegal stuff");
+        drawTool.drawText(500,910,"To accept conditions, press Enter");
     }
     public void drawCave(DrawTool drawTool){
         setNewImage("src/main/resources/graphic/backgrounds/Background Cave.png");

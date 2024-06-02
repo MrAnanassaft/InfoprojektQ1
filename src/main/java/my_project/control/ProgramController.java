@@ -3,6 +3,7 @@ package my_project.control;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.view.simple_gui.Button;
 import KAGO_framework.view.simple_gui.ButtonHandler;
+import javafx.scene.input.KeyCode;
 import my_project.model.*;
 import my_project.model.Buildings.Build;
 import my_project.model.buttons.*;
@@ -138,6 +139,9 @@ public class ProgramController {
         if (player.health <= 0 || player1.health <= 0){
             viewController.showScene(2);
         }
+        if(viewController.getSceneIndex() == 6 && viewController.isKeyDown(KeyCode.ENTER.getCode())){
+            viewController.showScene(0);
+        }
     }
 
     public void startNewGame(){
@@ -147,7 +151,8 @@ public class ProgramController {
         viewController.createScene(); // index 3 = skins
         viewController.createScene(); // index 4 = weapon
         viewController.createScene(); // index 5 = map
-        viewController.showScene(0);
+        viewController.createScene(); // index 6 = benutzeranleitung
+        viewController.showScene(6);
         Player.velocity = 500;
         createNewPlayers();
         /*player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, true, false, true, false, false, false);

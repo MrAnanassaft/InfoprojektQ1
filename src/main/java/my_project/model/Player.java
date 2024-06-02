@@ -28,7 +28,7 @@ public class Player extends InteractiveGraphicalObject {
     private String playerImageManStreched = "src/main/resources/graphic/skins/Skin ManStretched.png";
 
 
-    public int velocity = 500;
+    public static int velocity;
     private double gravityConstant = 981;
     private double verticalVeloctiy = 0;
 

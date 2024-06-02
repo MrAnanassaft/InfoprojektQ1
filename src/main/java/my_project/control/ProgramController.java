@@ -134,6 +134,7 @@ public class ProgramController {
             }
         }
 
+
         if (player.health <= 0 || player1.health <= 0){
             viewController.showScene(2);
         }

@@ -1,5 +1,7 @@
 package my_project.model;
 
+import my_project.model.Buildings.Build;
+
 public class CollisionDetector {
     public static boolean circleWithRectangle(double cx, double cy, double radius, double rx, double ry, double rw, double rh){
         // temporary variables to set edges for testing
@@ -47,5 +49,18 @@ public class CollisionDetector {
 
         // if uA and uB are between 0-1, lines are colliding
         return uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1;
+    }
+
+    public static boolean rectRect(Player player, Build build){
+        if(player.getX()+player.getWidth() > build.getX() && player.getX() < build.getX()+build.getWidth() && player.getY() + player.getHeight() > build.getY() && player.getY() < build.getY()+build.getHeight()){
+            return true;
+        }
+        return false;
+    }
+    public static boolean standsOnTop(Player player, Build build){
+        if(player.getX() + player.getWidth() > build.getX() && player.getX() < build.getX()+ build.getWidth() && !(player.getY()  > build.getY())){
+            return true;
+        }
+        return false;
     }
 }

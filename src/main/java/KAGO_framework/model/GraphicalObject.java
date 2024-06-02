@@ -152,6 +152,8 @@ public class GraphicalObject implements Drawable {
         return false;
     }
 
+
+
     /**
      * Berechnet die Distanz zwischen dem Mittelpunkt dieses Objekts und dem Mittelpunkt des übergebenen Objekts.
      * @param gO Das Objekt zu dem die Entfernung gemessen wird.

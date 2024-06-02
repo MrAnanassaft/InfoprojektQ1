@@ -117,8 +117,8 @@ public class ProgramController {
         viewController.createScene(); // index 4 = weapon
         viewController.createScene(); // index 5 = map
         viewController.showScene(0);
-        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, false, false, false, false, false, false);
-        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings, false, false, false, false, false, false);
+        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, true, false, true, false, false, false);
+        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings, true, false, false, true, false, false);
     }
     public void setScenesForStart(){
         for(int i = 0; i< viewController.getSceneSize(); i++){
@@ -154,7 +154,12 @@ public class ProgramController {
         viewController.register(player1);
         viewController.showScene(1);
     }
-
+    public void createNewPlayers(){
+        player = new Player(100, 100, 100, 100, 200, viewController.getDrawFrame().getWidth() - 200 - 10, 200, viewController,68, 65, 32, 69, allBuildings, true, false, true, false, false, false);
+        player1 = new Player( 200, 200, 100, 100, 200, viewController.getDrawFrame().getWidth() - viewController.getDrawFrame().getWidth() + 10, 200, viewController,39, 37, 155, 17, allBuildings, true, false, false, true, false, false);
+        player.velocity = 500;
+        player1.velocity = 500;
+    }
 }
 
 /*if (shot.target == player){

@@ -67,14 +67,18 @@ public class WeaponButton extends Buttons{
         }else if(Objects.equals(image, "src/main/resources/graphic/weapons/Scar.png")){
             if(isPlayer1){
                 player.selectScar = true;
+                player.selectSniper = false;
             } else {
                 player1.selectScar = true;
+                player1.selectSniper = false;
             }
         }else if(Objects.equals(image, "src/main/resources/graphic/weapons/Sniper.png")){
             if(isPlayer1){
                 player.selectSniper = true;
+                player.selectScar = false;
             } else {
                 player1.selectSniper = true;
+                player1.selectScar = false;
             }
         }
     }

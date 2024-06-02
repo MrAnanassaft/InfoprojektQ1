@@ -28,7 +28,7 @@ public class Player extends InteractiveGraphicalObject {
     private String playerImageManStreched = "src/main/resources/graphic/skins/Skin ManStretched.png";
 
 
-    private int velocity = 500;
+    public int velocity = 500;
     private double gravityConstant = 981;
     private double verticalVeloctiy = 0;
 
@@ -116,6 +116,7 @@ public class Player extends InteractiveGraphicalObject {
             setWeaponImage(playerImageScar);
             drawTool.drawTransformedImage(weapon, x + this.width / 2, y + this.height / 2, degree, 3);
             scar = true;
+            sniper = false;
         } else {
             scar = false;
         }
@@ -123,6 +124,7 @@ public class Player extends InteractiveGraphicalObject {
             setWeaponImage(playerImageSniper);
             drawTool.drawTransformedImage(weapon, x + width / 2, y + height / 2, degree, 3);
             sniper = true;
+            scar = false;
         } else {
             sniper = false;
         }
@@ -148,7 +150,6 @@ public class Player extends InteractiveGraphicalObject {
                     buildY = stair.getPlayerY(this);
                     playerY = buildY;
                 }
-
             }
         }
 
@@ -244,5 +245,14 @@ public class Player extends InteractiveGraphicalObject {
         } catch (IOException e) {
             if (Config.INFO_MESSAGES) System.out.println("Laden eines Bildes fehlgeschlagen: " + pathToImage);
         }
+    }
+    public void restartGame(){
+        selectBlackbear = false;
+        selectHotdog = false;
+        selectMan = false;
+        selectManStretched = false;
+        selectScar = true;
+        selectSniper = false;
+        healthbarwidth = 200;
     }
 }

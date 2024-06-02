@@ -10,7 +10,7 @@ import my_project.model.buttons.Buttons;
 import java.awt.*;
 import java.sql.SQLOutput;
 
-import static my_project.control.ProgramController.viewController;
+import static my_project.control.ProgramController.*;
 
 public class Select extends Buttons {
     private int scene;
@@ -73,7 +73,15 @@ public class Select extends Buttons {
             } else {
                 drawTool.drawText(700, 200, "PLAYER 2 CHOOSES");
             }
-
+            if((player.selectBlackbear && SkinButton.isPlayer1) || (player1.selectBlackbear && !SkinButton.isPlayer1)){
+                g2d.drawImage(SkinButton.blackbear, 200,300,(2 * SkinButton.blackbear.getWidth()),(2 * SkinButton.blackbear.getHeight()),null);
+            }else if((player.selectHotdog  && SkinButton.isPlayer1)|| (player1.selectHotdog && !SkinButton.isPlayer1)){
+                g2d.drawImage(SkinButton.hotdog,200,300,(2 * SkinButton.hotdog.getWidth()),(2 * SkinButton.hotdog.getHeight()),null);
+            }else if((player.selectMan && SkinButton.isPlayer1) || (player1.selectMan && !SkinButton.isPlayer1)){
+                g2d.drawImage(SkinButton.man,200,300,(2 * SkinButton.man.getWidth()), (2 * SkinButton.man.getHeight()),null);
+            }else if((player.selectManStretched && SkinButton.isPlayer1)|| (player1.selectManStretched && !SkinButton.isPlayer1)) {
+                g2d.drawImage(SkinButton.manStretched,200,300,(2 * SkinButton.manStretched.getWidth()), (2 * SkinButton.manStretched.getHeight()),null);
+            }
         } else if (viewController.getSceneIndex() == 4) {
             if (WeaponButton.isPlayer1) {
                 drawTool.drawText(700, 200, "PLAYER 1 CHOOSES");

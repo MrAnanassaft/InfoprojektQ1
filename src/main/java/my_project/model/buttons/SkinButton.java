@@ -19,10 +19,6 @@ public class SkinButton extends Buttons{
     public static BufferedImage hotdog;
     public static BufferedImage man;
     public static BufferedImage manStretched;
-    public static boolean isBlackbear;
-    public static boolean isHotdog;
-    public static boolean isMan;
-    public static boolean isManStretched;
     public SkinButton(ProgramController p){
         super(p);
         setPicture("src/main/resources/graphic/buttons/Skinselectbutton.png");
@@ -77,45 +73,51 @@ public class SkinButton extends Buttons{
         }else if(Objects.equals(image, "src/main/resources/graphic/skins/Skin Blackbear.png")){
             if(isPlayer1){
                 player.selectBlackbear = true;
+                player.selectHotdog = false;
+                player.selectMan = false;
+                player.selectManStretched = false;
             } else {
                 player1.selectBlackbear = true;
+                player1.selectHotdog = false;
+                player1.selectMan = false;
+                player1.selectManStretched = false;
             }
-            isBlackbear = true;
         }else if(Objects.equals(image , "src/main/resources/graphic/skins/Skin Hotdog.png")){
             if(isPlayer1){
+                player.selectBlackbear = false;
                 player.selectHotdog = true;
+                player.selectMan = false;
+                player.selectManStretched = false;
             } else {
+                player1.selectBlackbear = false;
                 player1.selectHotdog = true;
+                player1.selectMan = false;
+                player1.selectManStretched = false;
             }
-            isHotdog = true;
         }else if(Objects.equals(image, "src/main/resources/graphic/skins/Skin Man.png")){
             if(isPlayer1){
+                player.selectBlackbear = false;
+                player.selectHotdog = false;
                 player.selectMan = true;
+                player.selectManStretched = false;
             } else {
+                player1.selectBlackbear = false;
+                player1.selectHotdog = false;
                 player1.selectMan = true;
+                player1.selectManStretched = false;
             }
-            isMan = true;
         }else if(Objects.equals(image , "src/main/resources/graphic/skins/Skin ManStretched.png")){
             if(isPlayer1){
+                player.selectBlackbear = false;
+                player.selectHotdog = false;
+                player.selectMan = false;
                 player.selectManStretched = true;
             } else {
+                player1.selectBlackbear = false;
+                player1.selectHotdog = false;
+                player1.selectMan = false;
                 player1.selectManStretched = true;
             }
-            isManStretched = true;
         }
-    }
-
-    public static BufferedImage getBlackbear() {
-        return blackbear;
-    }
-    public BufferedImage getHotdog(){
-        return hotdog;
-    }
-    public BufferedImage getMan() {
-        return man;
-    }
-
-    public BufferedImage getManStretched() {
-        return manStretched;
     }
 }

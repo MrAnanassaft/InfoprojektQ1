@@ -5,9 +5,12 @@ import KAGO_framework.view.DrawTool;
 import KAGO_framework.view.simple_gui.Button;
 import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.control.ProgramController;
+import my_project.model.Player;
 import my_project.model.Variable_Container;
 
-import static my_project.control.ProgramController.viewController;
+import java.util.ArrayList;
+
+import static my_project.control.ProgramController.*;
 
 
 public class RestartButton extends Buttons {
@@ -43,13 +46,16 @@ public class RestartButton extends Buttons {
 
     private void restartGame() {
         remove();
+        p.createNewPlayers();
         p.startButton.restart();
         p.viewController.removeAllDrawables();
         //p.enemies = new ArrayList<>();
         Variable_Container.buttons = new Button[10];
-        p.startGame();
-        p.setScenesForStart();
+        Variable_Container.selects = new ArrayList<>();
+        Variable_Container.shots = new ArrayList<>();
+        p.startProgram();
         p.viewController.showScene(0);
+        System.out.println(1);
     }
 
     private void remove(){
@@ -57,6 +63,8 @@ public class RestartButton extends Buttons {
         ProgramController.viewController.removeDrawable(button,1);
         ProgramController.viewController.removeDrawable(this,3);
         ProgramController.viewController.removeDrawable(this,1);
+        viewController.removeDrawable(player);
+        viewController.removeDrawable(player1);
     }
 
     public void restart(){

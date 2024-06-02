@@ -38,7 +38,7 @@ public class ProgramController {
     }
 
     public void updateProgram(double dt){
-        if(ViewController.isKeyDown(77)){ // M
+       /* if(ViewController.isKeyDown(77)){ // M
             player.selectScar = true;
         }
         if(ViewController.isKeyDown(78)){ // N
@@ -53,7 +53,7 @@ public class ProgramController {
         }
         if(ViewController.isKeyDown(76)){ // L
             viewController.showScene(2);
-        }
+        }*/
         if(ViewController.isKeyDown(27)){
             if(viewController.getSceneIndex() == 3){
                 viewController.showScene(0);

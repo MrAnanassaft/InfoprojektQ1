@@ -5,6 +5,7 @@ import KAGO_framework.view.DrawTool;
 import KAGO_framework.view.simple_gui.Button;
 import KAGO_framework.view.simple_gui.ButtonHandler;
 import my_project.control.ProgramController;
+import my_project.model.Background;
 import my_project.model.buttons.Buttons;
 
 import java.awt.*;
@@ -93,8 +94,17 @@ public class Select extends Buttons {
             }else if((player.selectSniper && WeaponButton.isPlayer1) || (player1.selectSniper && !WeaponButton.isPlayer1)){
                 g2d.drawImage(WeaponButton.sniper,200,300,(5*WeaponButton.sniper.getWidth()),(5*WeaponButton.sniper.getHeight()),null);
             }
+        } else if (viewController.getSceneIndex() == 5 ) {
+            drawTool.drawText(700,200,"CURRENT MAP");
+            if(Background.background == 1){
+                g2d.drawImage(MapButton.cave,200,300,(int)(0.2*MapButton.cave.getWidth()),(int)(0.2*MapButton.cave.getHeight()),null);
+            }else if(Background.background == 2){
+                g2d.drawImage(MapButton.plains,200,300,(int)(0.2*MapButton.plains.getWidth()),(int)(0.2*MapButton.plains.getHeight()),null);
+            }else if(Background.background == 3){
+                g2d.drawImage(MapButton.vulcan,200,300,(int)(0.2*MapButton.vulcan.getWidth()),(int)(0.2*MapButton.vulcan.getHeight()),null);
+            }
         }
-    } // Imagine ich habe eif was krasses gefixed
+    } // Imagine ich habe eif was krasses gefixed: Zitat Kiyan
 
     public void tellWoChooses(DrawTool drawTool) {
         drawTool.setCurrentColor(new Color(12, 12, 68, 37));

@@ -9,7 +9,7 @@ import java.awt.*;
 public class Background extends GraphicalObject {
     private int scene;
     private ViewController viewController;
-    public static int background;
+    public static int background = 1;
     public Background(int scene, ViewController viewController){
         this.scene = scene;
         this.viewController = viewController;

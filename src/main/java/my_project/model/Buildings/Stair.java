@@ -27,7 +27,14 @@ public class Stair extends Build {
 
     @Override
     public boolean collidesWithPlayer(Player player) {
-        return CollisionDetector.lineRect(x,y,x + 150 * direction,y-150,player.getX(),player.getY(),player.getWidth(),player.getHeight());
+        double dx;
+        dx = x - player.getX();
+        if(getPlayerY(player)+player.getHeight() > (y-150+dx)){
+            player.isOnStair = true;
+            return CollisionDetector.lineRect(x,y,x + 150 * direction,y-150,player.getX(),player.getY(),player.getWidth(),player.getHeight());
+        }
+        player.isOnStair = false;
+        return false;
     }
 
     @Override

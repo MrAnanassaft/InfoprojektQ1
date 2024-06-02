@@ -11,5 +11,11 @@ public abstract class Build extends GraphicalObject {
         this.y = y;
     }
     public abstract boolean collidesWithPlayer(Player player);
-
+    public void setBuildhealth(){
+        if (Player.sniper){
+            buildhealth  -= 15;
+        }else {
+            buildhealth -= 2;
+        }
+    }
 }

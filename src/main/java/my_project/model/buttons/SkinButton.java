@@ -36,8 +36,8 @@ public class SkinButton extends Buttons{
                 if(!wasPressed){
                     wasPressed = true;
                     getViewController().showScene(3);
-                    create(4,3,200,100,400,pathToImage,1);
-                    create(2,3,100,200,1400,players,1);
+                    create(4,3,200,790,420,pathToImage,1);
+                    create(2,3,100,300,1400,players,1);
                 }
             }
 

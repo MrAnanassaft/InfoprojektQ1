@@ -70,38 +70,38 @@ public class Select extends Buttons {
         drawTool.setCurrentColor(Color.BLACK);
         if (viewController.getSceneIndex() == 3) {
             if (SkinButton.isPlayer1) {
-                drawTool.drawText(700, 200, "PLAYER 1 CHOOSES");
+                drawTool.drawText(viewController.getDrawFrame().getWidth() / 4, 200, "PLAYER 1 CHOOSES");
             } else {
-                drawTool.drawText(700, 200, "PLAYER 2 CHOOSES");
+                drawTool.drawText(viewController.getDrawFrame().getWidth() / 4, 200, "PLAYER 2 CHOOSES");
             }
             if((player.selectBlackbear && SkinButton.isPlayer1) || (player1.selectBlackbear && !SkinButton.isPlayer1)){
-                g2d.drawImage(SkinButton.blackbear, 200,300,(2 * SkinButton.blackbear.getWidth()),(2 * SkinButton.blackbear.getHeight()),null);
+                g2d.drawImage(SkinButton.blackbear,   510,300,(2 * SkinButton.blackbear.getWidth()),(2 * SkinButton.blackbear.getHeight()),null);
             }else if((player.selectHotdog  && SkinButton.isPlayer1)|| (player1.selectHotdog && !SkinButton.isPlayer1)){
-                g2d.drawImage(SkinButton.hotdog,200,300,(2 * SkinButton.hotdog.getWidth()),(2 * SkinButton.hotdog.getHeight()),null);
+                g2d.drawImage(SkinButton.hotdog,  510,300,(2 * SkinButton.hotdog.getWidth()),(2 * SkinButton.hotdog.getHeight()),null);
             }else if((player.selectMan && SkinButton.isPlayer1) || (player1.selectMan && !SkinButton.isPlayer1)){
-                g2d.drawImage(SkinButton.man,200,300,(2 * SkinButton.man.getWidth()), (2 * SkinButton.man.getHeight()),null);
+                g2d.drawImage(SkinButton.man,  510,300,(2 * SkinButton.man.getWidth()), (2 * SkinButton.man.getHeight()),null);
             }else if((player.selectManStretched && SkinButton.isPlayer1)|| (player1.selectManStretched && !SkinButton.isPlayer1)) {
-                g2d.drawImage(SkinButton.manStretched,200,300,(2 * SkinButton.manStretched.getWidth()), (2 * SkinButton.manStretched.getHeight()),null);
+                g2d.drawImage(SkinButton.manStretched,  510,300,(2 * SkinButton.manStretched.getWidth()), (2 * SkinButton.manStretched.getHeight()),null);
             }
         } else if (viewController.getSceneIndex() == 4) {
             if (WeaponButton.isPlayer1) {
-                drawTool.drawText(700, 200, "PLAYER 1 CHOOSES");
+                drawTool.drawText(viewController.getDrawFrame().getWidth() / 4, 200, "PLAYER 1 CHOOSES");
             } else {
-                drawTool.drawText(700, 200, "PLAYER 2 CHOOSES");
+                drawTool.drawText(viewController.getDrawFrame().getWidth() / 4, 200, "PLAYER 2 CHOOSES");
             }
             if((player.selectScar && WeaponButton.isPlayer1) || (player1.selectScar && !WeaponButton.isPlayer1)){
-                g2d.drawImage(WeaponButton.scar,200,300,(5*WeaponButton.scar.getWidth()),(5*WeaponButton.scar.getHeight()),null);
+                g2d.drawImage(WeaponButton.scar,  510,300,(5*WeaponButton.scar.getWidth()),(5*WeaponButton.scar.getHeight()),null);
             }else if((player.selectSniper && WeaponButton.isPlayer1) || (player1.selectSniper && !WeaponButton.isPlayer1)){
-                g2d.drawImage(WeaponButton.sniper,200,300,(5*WeaponButton.sniper.getWidth()),(5*WeaponButton.sniper.getHeight()),null);
+                g2d.drawImage(WeaponButton.sniper,  510,300,(5*WeaponButton.sniper.getWidth()),(5*WeaponButton.sniper.getHeight()),null);
             }
         } else if (viewController.getSceneIndex() == 5 ) {
-            drawTool.drawText(700,200,"CURRENT MAP");
+            drawTool.drawText(viewController.getDrawFrame().getWidth() / 3,200,"CURRENT MAP");
             if(Background.background == 1){
-                g2d.drawImage(MapButton.cave,200,300,(int)(0.2*MapButton.cave.getWidth()),(int)(0.2*MapButton.cave.getHeight()),null);
+                g2d.drawImage(MapButton.cave,(viewController.getDrawFrame().getWidth() / 2) - (int)(0.2*MapButton.cave.getWidth()) / 2,300,(int)(0.2*MapButton.cave.getWidth()),(int)(0.2*MapButton.cave.getHeight()),null);
             }else if(Background.background == 2){
-                g2d.drawImage(MapButton.plains,200,300,(int)(0.2*MapButton.plains.getWidth()),(int)(0.2*MapButton.plains.getHeight()),null);
+                g2d.drawImage(MapButton.plains,(viewController.getDrawFrame().getWidth() / 2) - (int)(0.2*MapButton.plains.getWidth()) / 2,300,(int)(0.2*MapButton.plains.getWidth()),(int)(0.2*MapButton.plains.getHeight()),null);
             }else if(Background.background == 3){
-                g2d.drawImage(MapButton.vulcan,200,300,(int)(0.2*MapButton.vulcan.getWidth()),(int)(0.2*MapButton.vulcan.getHeight()),null);
+                g2d.drawImage(MapButton.vulcan,(viewController.getDrawFrame().getWidth() / 2) - (int)(0.2*MapButton.vulcan.getWidth()) / 2,300,(int)(0.2*MapButton.vulcan.getWidth()),(int)(0.2*MapButton.vulcan.getHeight()),null);
             }
         }
     } // Imagine ich habe eif was krasses gefixed: Zitat Kiyan

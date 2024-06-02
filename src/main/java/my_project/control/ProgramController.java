@@ -49,6 +49,7 @@ public class ProgramController {
         if(ViewController.isKeyDown(74)){ // J
             viewController.showScene(0);
         }
+
         if(ViewController.isKeyDown(75)){ // K
             viewController.showScene(1);
         }

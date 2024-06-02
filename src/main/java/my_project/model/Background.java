@@ -3,6 +3,7 @@ package my_project.model;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
+import my_project.control.ProgramController;
 
 import java.awt.*;
 
@@ -65,6 +66,11 @@ public class Background extends GraphicalObject {
         drawTool.setCurrentColor(Color.WHITE);
         drawTool.formatText("Monospaced",3,100);  // Bereits gecentert, bei veränderungen bitte wieder centern
         drawTool.drawText(662,100,"NICE GAME!"); //
+        if(ProgramController.player.health <= 0){
+            drawTool.drawText(340,200,"PLAYER 1 WON THE GAME!");
+        }else if(ProgramController.player1.health <= 0){
+            drawTool.drawText(340,200,"PLAYER 2 WON THE GAME!");
+        }
     }
     public void drawS3(DrawTool drawTool){
         drawTool.setCurrentColor(new Color(7, 119, 147));

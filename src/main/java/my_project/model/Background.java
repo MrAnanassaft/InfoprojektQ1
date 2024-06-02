@@ -99,9 +99,9 @@ public class Background extends GraphicalObject {
         drawTool.drawText(viewController.getDrawFrame().getWidth() / 3,100,"DIRECTIONS"); //
         drawTool.formatText("Monospaced",3,20);
         drawTool.drawText(500,250,"Player 1 moves with a : Right, d : Left, Space : Jump");
-        drawTool.drawText(500,310,"He shoots with e and builds with r");
+        drawTool.drawText(500,310,"He shoots with e and builds with q");
         drawTool.drawText(500,370,"Player 2 moves with right : Right, left : Left, Num0 : Jump");
-        drawTool.drawText(500,430,"He shoots with strg and builds with Num1");
+        drawTool.drawText(500,430,"He shoots with strg and builds with Right Shift");
         drawTool.drawText(500,490,"Before playing, you can choose the map, skin and your weapon");
         drawTool.drawText(500,550,"For selecting the Skin, press Skinbutton etc,");
         drawTool.drawText(500,610,"For leaving the Page, press Esc");

@@ -8,6 +8,7 @@ import my_project.control.ProgramController;
 import my_project.model.Variable_Container;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -17,11 +18,15 @@ public class WeaponButton extends Buttons{
 
     public static boolean isPlayer1 = true;
     private String[] pathToImage = new String[2];
+    public static BufferedImage scar;
+    public static BufferedImage sniper;
     public WeaponButton(ProgramController p){
         super(p);
         setPicture("src/main/resources/graphic/buttons/Gunselectbutton.png");
         pathToImage[0] = "src/main/resources/graphic/weapons/Scar.png";
         pathToImage[1] = "src/main/resources/graphic/weapons/Sniper.png";
+        scar = createNewImage(pathToImage[0]);
+        sniper = createNewImage(pathToImage[1]);
         ButtonHandler buttonHandler = new ButtonHandler() {
             @Override
             public void processButtonClick(int code) {

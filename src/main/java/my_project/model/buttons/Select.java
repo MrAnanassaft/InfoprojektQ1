@@ -88,6 +88,11 @@ public class Select extends Buttons {
             } else {
                 drawTool.drawText(700, 200, "PLAYER 2 CHOOSES");
             }
+            if((player.selectScar && WeaponButton.isPlayer1) || (player1.selectScar && !WeaponButton.isPlayer1)){
+                g2d.drawImage(WeaponButton.scar,200,300,(5*WeaponButton.scar.getWidth()),(5*WeaponButton.scar.getHeight()),null);
+            }else if((player.selectSniper && WeaponButton.isPlayer1) || (player1.selectSniper && !WeaponButton.isPlayer1)){
+                g2d.drawImage(WeaponButton.sniper,200,300,(5*WeaponButton.sniper.getWidth()),(5*WeaponButton.sniper.getHeight()),null);
+            }
         }
     } // Imagine ich habe eif was krasses gefixed
 

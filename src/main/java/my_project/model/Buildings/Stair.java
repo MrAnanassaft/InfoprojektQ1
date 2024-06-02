@@ -5,7 +5,7 @@ import my_project.model.CollisionDetector;
 import my_project.model.Player;
 
 public class Stair extends Build {
-    private int direction;
+    private final int direction;
     public static int LEFT = -1,RIGHT = 1;
     public Stair(double x, double y,int direction) {
         super(x, y);
@@ -18,7 +18,11 @@ public class Stair extends Build {
         }else{
             dx = player.getX() + player.getWidth() - x;
         }
-        return y - dx - player.getHeight();
+        double resultY = y - dx - player.getHeight();
+        if(resultY <= y - 150 - player.getHeight()){
+            return y-150-player.getHeight();
+        }
+        return resultY;
     }
 
     @Override
